@@ -1,0 +1,1507 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jesus Is My CEO — A Lifegroup for Christian Business Owners</title>
+<meta name="description" content="A lifegroup for Christian business owners and entrepreneurs who lead under God's authority — part discipleship, part trusted referral network. Connected through Church by the Glades.">
+<meta name="theme-color" content="#0B1F3A">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Jesus Is My CEO">
+<meta property="og:description" content="Lead your business the way God intended. A lifegroup and referral network for Christian business owners.">
+<meta property="og:site_name" content="Jesus Is My CEO">
+<!-- [OG IMAGE URL] — add a 1200x630 image once branding art exists -->
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230B1F3A'/><text x='50' y='68' font-size='52' font-family='Georgia,serif' fill='%23B8964A' text-anchor='middle'>J</text></svg>">
+
+<style>
+/* ==========================================================================
+   Jesus Is My CEO — single-file landing page
+   No external dependencies. System font stack, hand-rolled CSS.
+   ========================================================================== */
+
+:root {
+  --navy:      #0B1F3A;
+  --navy-deep: #071528;
+  --navy-mid:  #14304F;
+  --charcoal:  #1A1A1A;
+  --slate:     #5A6472;
+  --gold:      #B8964A;  /* brass on dark backgrounds — 5.9:1 on navy */
+  --gold-ink:  #836826;  /* same brass, darkened for light backgrounds — AA on white and cream */
+  --gold-lite: #D4B571;
+  --cream:     #F7F4EE;
+  --line:      #E2DDD2;
+  --white:     #FFFFFF;
+
+  --serif: ui-serif, Georgia, "Times New Roman", Times, serif;
+  --sans:  system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --nav-h: 72px;
+  --pad-y: clamp(4.5rem, 10vw, 8rem);
+  --shell: 1200px;
+  --ease:  cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--charcoal);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--serif);
+  font-weight: 400;
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p { margin: 0 0 1.15em; }
+p:last-child { margin-bottom: 0; }
+
+a { color: inherit; text-decoration: none; }
+
+img { max-width: 100%; display: block; }
+
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Layout primitives -------------------------------------------------- */
+
+.shell {
+  width: 100%;
+  max-width: var(--shell);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 5vw, 3rem);
+}
+
+.section {
+  padding-block: var(--pad-y);
+  scroll-margin-top: var(--nav-h);
+  position: relative;
+}
+
+.section--navy  { background: var(--navy);  color: rgba(255,255,255,0.82); }
+.section--deep  { background: var(--navy-deep); color: rgba(255,255,255,0.82); }
+.section--cream { background: var(--cream); }
+
+.section--navy h2, .section--navy h3,
+.section--deep h2, .section--deep h3 { color: var(--white); }
+
+/* Eyebrow label + heading rule: the motif repeated on every section.
+   Gold text uses --gold-ink on light backgrounds and --gold on dark ones,
+   so both directions clear WCAG AA. */
+
+.eyebrow {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin: 0 0 1.15rem;
+}
+.hero .eyebrow,
+.section--navy .eyebrow,
+.section--deep .eyebrow { color: var(--gold); }
+.eyebrow__num {
+  font-variant-numeric: tabular-nums;
+  opacity: 0.6;
+  margin-right: 0.5rem;
+}
+
+.section__head { max-width: 62ch; margin-bottom: clamp(2.5rem, 5vw, 3.75rem); }
+.section__head--center { margin-inline: auto; text-align: center; }
+
+h2 { font-size: clamp(1.95rem, 1.35rem + 2.6vw, 3.15rem); }
+
+.rule {
+  width: 48px;
+  height: 2px;
+  background: var(--gold);
+  border: 0;
+  margin: 1.5rem 0 0;
+}
+.section__head--center .rule { margin-inline: auto; }
+
+.lede {
+  font-size: clamp(1.075rem, 1.02rem + 0.3vw, 1.25rem);
+  color: var(--slate);
+  margin-top: 1.5rem;
+}
+.section--navy .lede, .section--deep .lede { color: rgba(255,255,255,0.7); }
+
+/* --- Buttons ------------------------------------------------------------ */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.9rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.25s var(--ease), color 0.25s var(--ease),
+              border-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.btn:hover { transform: translateY(-2px); }
+
+.btn--gold  { background: var(--gold); color: var(--navy-deep); }
+.btn--gold:hover { background: var(--gold-lite); }
+
+.btn--ghost { border-color: rgba(255,255,255,0.35); color: var(--white); }
+.btn--ghost:hover { border-color: var(--gold); color: var(--gold-lite); }
+
+.btn--outline { border-color: var(--gold); color: var(--gold); }
+.btn--outline:hover { background: var(--gold); color: var(--navy-deep); }
+
+/* --- Sticky nav --------------------------------------------------------- */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: transparent;
+  transition: background-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.nav.is-stuck {
+  background: rgba(11, 31, 58, 0.97);
+  box-shadow: 0 1px 0 rgba(184,150,74,0.28), 0 10px 30px rgba(0,0,0,0.22);
+  backdrop-filter: saturate(140%) blur(8px);
+}
+
+.nav__inner {
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.wordmark {
+  font-family: var(--serif);
+  font-size: 1.0625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--white);
+  white-space: nowrap;
+}
+.wordmark span { color: var(--gold); }
+
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: clamp(1rem, 2vw, 1.9rem);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav__links a {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.78);
+  padding-block: 0.5rem;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.nav__links a:hover { color: var(--white); border-bottom-color: var(--gold); }
+
+.nav__cta { display: none; padding: 0.7rem 1.3rem; font-size: 0.7rem; }
+
+/* Hamburger */
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  height: 1.5px;
+  background: var(--white);
+  transition: transform 0.3s var(--ease), opacity 0.2s var(--ease);
+}
+.burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+.burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+.menu {
+  position: fixed;
+  inset: var(--nav-h) 0 0;
+  z-index: 99;
+  background: var(--navy);
+  padding: 2rem clamp(1.25rem, 5vw, 3rem) 3rem;
+  overflow-y: auto;
+  transform: translateY(-8px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease), visibility 0.25s;
+}
+.menu.is-open { opacity: 1; visibility: visible; transform: none; }
+.menu ul { list-style: none; margin: 0 0 2rem; padding: 0; }
+.menu a {
+  display: block;
+  padding: 1.05rem 0;
+  font-family: var(--serif);
+  font-size: 1.3rem;
+  color: rgba(255,255,255,0.9);
+  border-bottom: 1px solid rgba(255,255,255,0.09);
+}
+.menu a:hover { color: var(--gold-lite); }
+.menu .btn { width: 100%; }
+
+body.is-locked { overflow: hidden; }
+
+@media (min-width: 900px) {
+  .nav__links, .nav__cta { display: inline-flex; }
+  .burger { display: none; }
+  .menu { display: none; }
+}
+
+/* --- Hero --------------------------------------------------------------- */
+
+.hero {
+  position: relative;
+  margin-top: calc(-1 * var(--nav-h));
+  padding-top: calc(var(--nav-h) + clamp(4.5rem, 12vh, 8rem));
+  padding-bottom: clamp(3.5rem, 9vh, 6rem);
+  background:
+    radial-gradient(120% 90% at 78% 8%, rgba(184,150,74,0.16), transparent 58%),
+    linear-gradient(168deg, var(--navy) 0%, var(--navy-deep) 78%);
+  color: var(--white);
+  overflow: hidden;
+}
+/* faint boardroom grid, purely decorative */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.028) 1px, transparent 1px);
+  background-size: 78px 78px;
+  mask-image: radial-gradient(80% 70% at 50% 40%, #000, transparent 78%);
+  pointer-events: none;
+}
+/* Shell keeps the gutter aligned with the nav wordmark; children cap the measure. */
+.hero__inner { position: relative; z-index: 1; }
+.hero__inner > * { max-width: 46rem; }
+
+.hero h1 {
+  font-size: clamp(2.6rem, 1.5rem + 6.4vw, 5.25rem);
+  letter-spacing: 0.015em;
+  line-height: 1.02;
+  text-transform: uppercase;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+.hero h1 em {
+  display: block;
+  font-style: normal;
+  color: var(--gold);
+}
+
+.hero__tagline {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 1.05rem + 1.35vw, 2.1rem);
+  line-height: 1.25;
+  color: var(--white);
+  max-width: 30ch;
+  margin-bottom: 1.35rem;
+}
+.hero__sub {
+  font-size: clamp(1.03rem, 1rem + 0.25vw, 1.15rem);
+  color: rgba(255,255,255,0.72);
+  max-width: 44ch;
+  margin-bottom: clamp(2.25rem, 4vw, 3rem);
+}
+
+.hero__actions { display: flex; flex-wrap: wrap; gap: 0.9rem; }
+
+.logistics {
+  margin-top: clamp(3rem, 7vw, 4.5rem);
+  padding: 1.4rem clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid rgba(255,255,255,0.16);
+  border-left: 3px solid var(--gold);
+  background: rgba(255,255,255,0.035);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem clamp(1.25rem, 3vw, 2.5rem);
+  font-size: 0.8125rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.82);
+}
+.logistics dl { display: contents; margin: 0; }
+.logistics dt { color: var(--gold); font-weight: 600; margin-right: 0.5rem; }
+.logistics dd { margin: 0; }
+.logistics__item { display: flex; align-items: baseline; }
+
+/* --- Placeholder media blocks ------------------------------------------- */
+
+.ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  background:
+    linear-gradient(135deg, rgba(184,150,74,0.14) 0%, transparent 42%),
+    linear-gradient(155deg, var(--navy-mid), var(--navy-deep));
+  border: 1px solid rgba(184,150,74,0.3);
+  color: rgba(255,255,255,0.6);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+.ph::after {
+  content: "";
+  position: absolute;
+  top: -40%;
+  left: -20%;
+  width: 55%;
+  height: 190%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transform: rotate(18deg);
+  pointer-events: none;
+}
+.ph--wide { aspect-ratio: 4 / 3; }
+.ph--portrait { aspect-ratio: 4 / 5; }
+
+/* --- Mission ------------------------------------------------------------ */
+
+.split {
+  display: grid;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: center;
+}
+@media (min-width: 900px) {
+  .split { grid-template-columns: 1.05fr 0.95fr; }
+}
+
+.pillars {
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1.4rem;
+}
+@media (min-width: 620px) { .pillars { grid-template-columns: 1fr 1fr; } }
+
+.pillars li { padding-left: 1.15rem; border-left: 2px solid var(--gold); }
+.pillars h3 {
+  font-family: var(--sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--navy);
+  margin-bottom: 0.4rem;
+}
+.pillars p { font-size: 0.95rem; color: var(--slate); }
+
+/* --- Stewardship callout ------------------------------------------------ */
+
+.steward {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  box-shadow: 0 24px 60px -30px rgba(11,31,58,0.28);
+  padding: clamp(2rem, 5vw, 4rem);
+  max-width: 62rem;
+  margin-inline: auto;
+}
+.steward__quote {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 1.1rem + 1.9vw, 2.5rem);
+  line-height: 1.24;
+  color: var(--navy);
+  margin: 0 0 1.75rem;
+  max-width: 34ch;
+}
+.steward__quote b { font-weight: 400; color: var(--gold-ink); }
+.steward__body { max-width: 62ch; color: var(--slate); }
+
+.tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 2.25rem 0 0;
+  padding: 0;
+}
+.tags li {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--line);
+  background: var(--cream);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+
+/* --- Scripture ---------------------------------------------------------- */
+
+.verse { text-align: center; max-width: 54rem; margin-inline: auto; }
+.verse__mark {
+  display: block;
+  font-family: var(--serif);
+  font-size: clamp(4rem, 9vw, 7rem);
+  line-height: 0.6;
+  color: var(--gold);
+  opacity: 0.55;
+  margin-bottom: 0.35rem;
+}
+.verse blockquote {
+  margin: 0;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(1.5rem, 1.05rem + 2.2vw, 2.75rem);
+  line-height: 1.32;
+  color: var(--white);
+}
+.verse cite {
+  display: block;
+  margin-top: 2rem;
+  font-family: var(--sans);
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.verse cite::before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 1.5rem;
+  opacity: 0.7;
+}
+.verse__note {
+  margin-top: 2.5rem;
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.6);
+  max-width: 46ch;
+  margin-inline: auto;
+}
+
+/* --- Grids (steps, directory, leaders) ---------------------------------- */
+
+.grid { display: grid; gap: clamp(1.25rem, 2.5vw, 1.75rem); }
+@media (min-width: 640px)  { .grid--3 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .grid--3 { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 620px)  { .grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .grid--4 { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 800px)  { .grid--2 { grid-template-columns: repeat(2, 1fr); } }
+
+.step {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 2px solid var(--navy);
+  padding: clamp(1.5rem, 3vw, 2rem);
+  display: flex;
+  flex-direction: column;
+}
+.step__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.step__num {
+  font-family: var(--serif);
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--gold-ink);
+}
+.step__icon { color: var(--navy); opacity: 0.5; flex: none; }
+.step h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 0.65rem; }
+.step p { font-size: 0.9375rem; color: var(--slate); }
+.chip {
+  align-self: flex-start;
+  margin-top: 1.25rem;
+  padding: 0.3rem 0.7rem;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--slate);
+}
+
+/* Directory cards */
+.card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  padding: clamp(1.4rem, 3vw, 1.85rem);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -1px -1px auto;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s var(--ease);
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(11,31,58,0.35); }
+.card:hover::before { transform: scaleX(1); }
+
+.card__cat {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin-bottom: 0.85rem;
+}
+.card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 0.3rem; }
+.card__owner {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--navy);
+  opacity: 0.65;
+  margin-bottom: 0.85rem;
+}
+.card p { font-size: 0.9rem; color: var(--slate); margin-bottom: 1.5rem; }
+.card__link {
+  margin-top: auto;
+  align-self: flex-start;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--navy);
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 3px;
+  transition: color 0.2s var(--ease), gap 0.2s var(--ease);
+}
+.card__link:hover { color: var(--gold-ink); }
+
+.badge {
+  display: inline-block;
+  margin-bottom: 1.15rem;
+  padding: 0.4rem 0.85rem;
+  border: 1px dashed var(--gold);
+  background: rgba(184,150,74,0.09);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+
+.note {
+  margin-top: clamp(2.25rem, 4vw, 3rem);
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.9375rem;
+  color: var(--slate);
+  max-width: 68ch;
+}
+
+/* Leaders */
+.leader {
+  border: 1px solid var(--line);
+  background: var(--white);
+  display: grid;
+  gap: 0;
+}
+@media (min-width: 520px) { .leader { grid-template-columns: 0.85fr 1.15fr; } }
+.leader__media { border: 0; border-right: 1px solid rgba(184,150,74,0.3); min-height: 300px; }
+.leader__body { padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; }
+.leader h3 { font-size: 1.5rem; color: var(--navy); margin-bottom: 0.4rem; }
+.leader__role {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin-bottom: 1.25rem;
+}
+.leader__bio { font-size: 0.9375rem; color: var(--slate); flex: 1; }
+
+/* Bio placeholder: styled as an intentional content slot, not a stray chip.
+   Replace the whole .ph-text block with real bio paragraphs. */
+.ph-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  height: 100%;
+  min-height: 8.5rem;
+  padding: 1.15rem 1.25rem;
+  background: var(--cream);
+  border: 1px dashed rgba(184,150,74,0.55);
+  border-left: 2px solid var(--gold);
+}
+.ph-text b {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+.ph-text i {
+  font-style: normal;
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  color: var(--slate);
+}
+
+/* --- FAQ ---------------------------------------------------------------- */
+
+.faq { max-width: 56rem; margin-inline: auto; }
+
+.faq details {
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+.faq details:first-of-type { border-top: 1px solid rgba(255,255,255,0.14); }
+
+.faq summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 1.5rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--serif);
+  font-size: clamp(1.075rem, 1rem + 0.4vw, 1.3rem);
+  color: var(--white);
+  transition: color 0.2s var(--ease);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary:hover { color: var(--gold-lite); }
+
+.faq summary::after {
+  content: "";
+  flex: none;
+  width: 11px;
+  height: 11px;
+  margin-top: 0.45em;
+  border-right: 1.5px solid var(--gold);
+  border-bottom: 1.5px solid var(--gold);
+  transform: rotate(45deg);
+  transition: transform 0.3s var(--ease);
+}
+.faq details[open] summary::after { transform: rotate(-135deg); }
+
+.faq__body {
+  padding: 0 0 1.75rem;
+  max-width: 68ch;
+  color: rgba(255,255,255,0.72);
+  font-size: 0.9688rem;
+}
+
+/* --- Contact / footer --------------------------------------------------- */
+
+.contact { text-align: center; max-width: 48rem; margin-inline: auto; }
+.contact h2 { margin-bottom: 1.5rem; }
+
+.contact__methods {
+  display: grid;
+  gap: 1rem;
+  margin: clamp(2.5rem, 5vw, 3.25rem) 0 0;
+  text-align: left;
+}
+@media (min-width: 620px) { .contact__methods { grid-template-columns: 1fr 1fr; } }
+
+.contact__methods a {
+  display: block;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.035);
+  transition: border-color 0.25s var(--ease), background-color 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.contact__methods a:hover {
+  border-color: var(--gold);
+  background: rgba(184,150,74,0.09);
+  transform: translateY(-2px);
+}
+.contact__methods dt,
+.contact__label {
+  display: block;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+.contact__value {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  color: var(--white);
+  word-break: break-word;
+}
+
+.church {
+  margin-top: clamp(2.25rem, 4vw, 3rem);
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  font-size: 0.9688rem;
+  color: rgba(255,255,255,0.7);
+}
+.church strong { color: var(--white); font-weight: 600; }
+
+.footer {
+  background: #050F1D;
+  padding: 2rem 0;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.75rem;
+}
+.footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.footer .wordmark { font-size: 0.9375rem; }
+
+/* --- Scroll reveal (progressive enhancement) ---------------------------- */
+
+.js .reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s var(--ease), transform 0.55s var(--ease);
+}
+.js .reveal.is-visible { opacity: 1; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+  .js .reveal { opacity: 1 !important; transform: none !important; }
+  .btn:hover, .card:hover { transform: none; }
+}
+
+@media print {
+  .nav, .menu { display: none; }
+  body { color: #000; background: #fff; }
+  .section--navy, .section--deep, .hero { background: #fff !important; color: #000 !important; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ============================== NAV ============================== -->
+<header class="nav" id="nav">
+  <div class="shell nav__inner">
+    <a class="wordmark" href="#top">Jesus Is My <span>CEO</span></a>
+
+    <nav aria-label="Main navigation">
+      <ul class="nav__links">
+        <li><a href="#mission">Mission</a></li>
+        <li><a href="#stewardship">Stewardship</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#directory">Directory</a></li>
+        <li><a href="#leaders">Leaders</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn--outline nav__cta" href="#contact">Get Connected</a>
+
+    <button class="burger" id="burger" type="button"
+            aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="menu" id="menu">
+    <ul>
+      <li><a href="#mission">Mission &amp; Vision</a></li>
+      <li><a href="#stewardship">Stewardship</a></li>
+      <li><a href="#scripture">Scripture</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#directory">Business Directory</a></li>
+      <li><a href="#leaders">Leaders</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a class="btn btn--gold" href="#contact">Get Connected</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ============================== HERO ============================== -->
+  <section class="hero" id="hero">
+    <div class="shell hero__inner">
+      <p class="eyebrow">A Lifegroup for Business Owners &amp; Entrepreneurs</p>
+
+      <h1>Jesus Is<br><em>My CEO</em></h1>
+
+      <!--
+        TAGLINE OPTIONS — swap the <p class="hero__tagline"> copy below:
+        1. "Lead your business the way God intended."   (in use)
+        2. "You have a board of one."
+        3. "Owners on paper. Stewards in practice."
+      -->
+      <p class="hero__tagline">Lead your business the way God intended.</p>
+
+      <p class="hero__sub">
+        A community of Christian business owners who run real companies, make real
+        decisions, and answer to a higher authority. Discipleship and referrals,
+        at the same table.
+      </p>
+
+      <div class="hero__actions">
+        <a class="btn btn--gold" href="#contact">Get Connected</a>
+        <a class="btn btn--ghost" href="#how-it-works">How It Works</a>
+      </div>
+
+      <!-- Logistics: replace the bracketed placeholders with real details -->
+      <div class="logistics">
+        <div class="logistics__item"><dl><dt>When</dt><dd>[DAY/TIME]</dd></dl></div>
+        <div class="logistics__item"><dl><dt>Where</dt><dd>[LOCATION]</dd></dl></div>
+        <div class="logistics__item"><dl><dt>Through</dt><dd>Church by the Glades</dd></dl></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== MISSION ============================== -->
+  <section class="section" id="mission">
+    <div class="shell split">
+      <div class="reveal">
+        <p class="eyebrow"><span class="eyebrow__num">01</span>Mission &amp; Vision</p>
+        <h2>Somebody is already running your company.</h2>
+        <hr class="rule">
+
+        <p class="lede">
+          The name isn't a slogan. It's an org chart. Jesus holds the top seat over
+          our businesses — the vision, the direction, the final call — and we operate
+          one line beneath Him.
+        </p>
+
+        <p>
+          Most of us learned to lead by taking ownership. Set the vision, own the
+          outcome, carry the weight. That instinct builds companies, and it also
+          quietly makes us the highest authority in the room. This group exists to
+          correct the chart. You still run the company. You just stop pretending you
+          own it.
+        </p>
+        <p>
+          Practically, that means we bring real decisions to a table of people who
+          will ask what God is saying before they ask what the market is saying — and
+          who will follow up next month to see whether you actually listened.
+        </p>
+
+        <ul class="pillars">
+          <li>
+            <h3>Vision</h3>
+            <p>We seek direction from the One who sees the whole market — and the whole story.</p>
+          </li>
+          <li>
+            <h3>Direction</h3>
+            <p>Strategy submitted in prayer before it's submitted to a spreadsheet.</p>
+          </li>
+          <li>
+            <h3>Accountability</h3>
+            <p>Peers who know your numbers, your temptations, and your commitments.</p>
+          </li>
+          <li>
+            <h3>Reporting</h3>
+            <p>Every owner reports to someone. We report to Christ, out loud, together.</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="reveal">
+        <!-- Swap for a real photo: boardroom / group around a table -->
+        <div class="ph ph--wide">[PHOTO — GROUP AT THE TABLE]</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== STEWARDSHIP ============================== -->
+  <section class="section section--cream" id="stewardship">
+    <div class="shell">
+      <div class="section__head section__head--center reveal">
+        <p class="eyebrow"><span class="eyebrow__num">02</span>Our Guiding Principle</p>
+        <h2>Stewardship</h2>
+        <hr class="rule">
+      </div>
+
+      <div class="steward reveal">
+        <p class="steward__quote">
+          Everything is borrowed. <b>God is the ultimate owner of everything we have,
+          had, and will ever have.</b>
+        </p>
+
+        <div class="steward__body">
+          <p>
+            If the business isn't ours, the pressure changes shape. Decisions stop being
+            about protecting what we built and start being about managing well what we
+            were handed — which frees us to be generous when it's costly, patient when
+            it's slow, and honest when a shortcut would be easier to explain.
+          </p>
+          <p>
+            It reaches the finances first: how we price, how we pay people, how much we
+            keep and how much we release. Then it reaches growth, because a steward asks
+            whether an opportunity is his to take before he asks whether he can win it.
+            And it reaches relationships — clients, employees, competitors, and the
+            people at this table are all entrusted to us, not owed to us.
+          </p>
+        </div>
+
+        <ul class="tags">
+          <li>Decisions</li>
+          <li>Finances</li>
+          <li>Growth</li>
+          <li>Relationships</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== SCRIPTURE ============================== -->
+  <section class="section section--navy" id="scripture">
+    <div class="shell">
+      <div class="verse reveal">
+        <p class="eyebrow" style="text-align:center">
+          <span class="eyebrow__num">03</span>Anchor Scripture
+        </p>
+
+        <span class="verse__mark" aria-hidden="true">&ldquo;</span>
+
+        <!--
+          VERSE OPTIONS — Psalm 24:1 (in use) is the cleanest match for
+          "everything is borrowed." Alternates, ready to swap in:
+
+          "Now it is required that those who have been given a trust must prove
+          faithful." — 1 Corinthians 4:2
+
+          "Whoever can be trusted with very little can also be trusted with much...
+          And if you have not been trustworthy with someone else's property, who will
+          give you property of your own?" — Luke 16:10-12
+        -->
+        <blockquote cite="https://www.biblegateway.com/passage/?search=Psalm%2024%3A1">
+          The earth is the Lord&rsquo;s, and everything in it, the world, and all who
+          live in it.
+        </blockquote>
+
+        <cite>Psalm 24:1</cite>
+
+        <p class="verse__note">
+          Not a portion. Not a partnership. Everything &mdash; including the company
+          with your name on the paperwork.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== HOW IT WORKS ============================== -->
+  <section class="section" id="how-it-works">
+    <div class="shell">
+      <div class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__num">04</span>How the Group Works</p>
+        <h2>A standing agenda, not a hangout.</h2>
+        <hr class="rule">
+        <p class="lede">
+          Every gathering follows the same rhythm, so you always know what you're
+          walking into and what you need to bring. Timings below are placeholders
+          &mdash; the shape holds.
+        </p>
+      </div>
+
+      <div class="grid grid--3">
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">01</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/>
+              <path d="M12 8v8M9 11h6"/>
+            </svg>
+          </div>
+          <h3>Opening &amp; Devotional</h3>
+          <p>We start in the Word, not in small talk. A short passage and a clear takeaway to carry into the week.</p>
+          <span class="chip">[15 MIN]</span>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">02</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+            </svg>
+          </div>
+          <h3>Business Updates &amp; Needs</h3>
+          <p>Each member gets the floor: what moved, what stalled, and the one thing they need help with right now.</p>
+          <span class="chip">[20 MIN]</span>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">03</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/>
+              <path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+            </svg>
+          </div>
+          <h3>Teaching &amp; Discussion</h3>
+          <p>One topic where scripture and business collide &mdash; pricing, partnerships, hiring, debt, rest &mdash; worked through together.</p>
+          <span class="chip">[25 MIN]</span>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">04</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7 3C19 15.6 12 20 12 20Z"/>
+            </svg>
+          </div>
+          <h3>Prayer</h3>
+          <p>We pray specifically &mdash; over deals, payroll, families, and the decisions nobody else knows you're carrying.</p>
+          <span class="chip">[15 MIN]</span>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">05</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <circle cx="7" cy="8" r="2.6"/><circle cx="17" cy="8" r="2.6"/>
+              <path d="M3 19c0-2.4 1.8-4.2 4-4.2s4 1.8 4 4.2M13 19c0-2.4 1.8-4.2 4-4.2s4 1.8 4 4.2"/>
+            </svg>
+          </div>
+          <h3>Referrals &amp; Networking</h3>
+          <p>Open floor for connections: who you need to meet, who you can vouch for, and business passed member to member.</p>
+          <span class="chip">[25 MIN]</span>
+        </article>
+
+        <article class="step reveal" style="border-top-color: var(--gold)">
+          <div class="step__top">
+            <span class="step__num">&mdash;</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/>
+            </svg>
+          </div>
+          <h3>Between Meetings</h3>
+          <p>The work continues in follow-ups, one-on-ones, and referrals that move without waiting for the next gathering.</p>
+          <span class="chip">[ONGOING]</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== DIRECTORY ============================== -->
+  <section class="section section--cream" id="directory">
+    <div class="shell">
+      <div class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__num">05</span>Business Directory</p>
+        <h2>Refer inside the room first.</h2>
+        <hr class="rule">
+        <p class="lede">
+          When a member needs a service, they look here before they look anywhere
+          else. Every listing is a business run by someone whose character you've
+          watched up close.
+        </p>
+        <p class="badge" style="margin-top:1.75rem">
+          [Sample entries — replace with real member businesses]
+        </p>
+      </div>
+
+      <!-- SAMPLE DIRECTORY ENTRIES: all 8 cards below are placeholder data -->
+      <div class="grid grid--4">
+        <article class="card reveal">
+          <p class="card__cat">Real Estate</p>
+          <h3>[Cornerstone Realty Group]</h3>
+          <p class="card__owner">[Marcus Delgado]</p>
+          <p>Residential buying and selling across Broward and Palm Beach counties.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+
+        <article class="card reveal">
+          <p class="card__cat">Accounting &amp; Tax</p>
+          <h3>[Ledger &amp; Light CPA]</h3>
+          <p class="card__owner">[Priya Raman]</p>
+          <p>Tax strategy, bookkeeping, and CFO support for owner-operated companies.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+
+        <article class="card reveal">
+          <p class="card__cat">Legal</p>
+          <h3>[Hartwell Business Law]</h3>
+          <p class="card__owner">[Dana Hartwell]</p>
+          <p>Contracts, entity formation, and dispute resolution for small businesses.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+
+        <article class="card reveal">
+          <p class="card__cat">Home Services</p>
+          <h3>[TrueNorth Air &amp; Plumbing]</h3>
+          <p class="card__owner">[Eli Navarro]</p>
+          <p>HVAC installs, repairs, and maintenance plans for homes and offices.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+
+        <article class="card reveal">
+          <p class="card__cat">Health &amp; Wellness</p>
+          <h3>[Restore Physical Therapy]</h3>
+          <p class="card__owner">[Tasha Boone]</p>
+          <p>Orthopedic rehab and mobility coaching for desk-bound professionals.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+
+        <article class="card reveal">
+          <p class="card__cat">Marketing &amp; Brand</p>
+          <h3>[Fieldpost Creative]</h3>
+          <p class="card__owner">[Jordan Weir]</p>
+          <p>Websites, brand systems, and lead generation for service businesses.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+
+        <article class="card reveal">
+          <p class="card__cat">Insurance</p>
+          <h3>[Anchor Risk Advisors]</h3>
+          <p class="card__owner">[Sofia Marchetti]</p>
+          <p>Commercial, life, and health coverage reviewed without the sales pitch.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+
+        <article class="card reveal">
+          <p class="card__cat">Construction</p>
+          <h3>[Beacon Build Co.]</h3>
+          <p class="card__owner">[Wes Coleman]</p>
+          <p>Remodels, buildouts, and commercial tenant improvements on schedule.</p>
+          <a class="card__link" href="#contact">Contact &rarr;</a>
+        </article>
+      </div>
+
+      <p class="note">
+        <strong>How referrals move:</strong> needs surface during the weekly meeting,
+        a member vouches for someone at this table, and the introduction happens
+        directly &mdash; no lead fees, no quotas, no scripts. The only currency here is
+        a reputation you'd stake your own name on.
+      </p>
+    </div>
+  </section>
+
+  <!-- ============================== LEADERS ============================== -->
+  <section class="section" id="leaders">
+    <div class="shell">
+      <div class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__num">06</span>Leadership</p>
+        <h2>Led by owners, not administrators.</h2>
+        <hr class="rule">
+        <p class="lede">
+          Kelly and Alex co-lead the group &mdash; setting the teaching, guarding the
+          culture, and keeping the referral side honest.
+        </p>
+      </div>
+
+      <!--
+        Kelly and Alex's real professional context (coaching and accounting-related
+        businesses) can be woven into these bios and the [TITLE — BUSINESS] lines later.
+      -->
+      <div class="grid grid--2">
+        <article class="leader reveal">
+          <div class="ph leader__media">[HEADSHOT — KELLY]</div>
+          <div class="leader__body">
+            <h3>Kelly</h3>
+            <p class="leader__role">Co-Leader &middot; [TITLE — BUSINESS]</p>
+            <div class="leader__bio">
+              <div class="ph-text">
+                <b>[KELLY BIO]</b>
+                <i>Two or three sentences: her business and professional background,
+                  how long she&rsquo;s been at Church by the Glades, and why she leads
+                  this group.</i>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="leader reveal">
+          <div class="ph leader__media">[HEADSHOT — ALEX]</div>
+          <div class="leader__body">
+            <h3>Alex</h3>
+            <p class="leader__role">Co-Leader &middot; [TITLE — BUSINESS]</p>
+            <div class="leader__bio">
+              <div class="ph-text">
+                <b>[ALEX BIO]</b>
+                <i>Two or three sentences: his business and professional background,
+                  how long he&rsquo;s been at Church by the Glades, and why he leads
+                  this group.</i>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== FAQ ============================== -->
+  <section class="section section--navy" id="faq">
+    <div class="shell">
+      <div class="section__head section__head--center reveal">
+        <p class="eyebrow"><span class="eyebrow__num">07</span>Questions</p>
+        <h2>Before you reach out.</h2>
+        <hr class="rule">
+      </div>
+
+      <div class="faq reveal" id="faq-list">
+        <details>
+          <summary>Who is this group for?</summary>
+          <div class="faq__body">
+            <p>
+              Christian business owners and entrepreneurs who want their faith to
+              actually govern how they operate &mdash; not sit beside it. If you carry
+              decisions nobody else in your life fully understands, and you want peers
+              who will pray about them and then hold you to what you said, you're the
+              person we built this for.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Do I need to be a certain type of business owner to join?</summary>
+          <div class="faq__body">
+            <p>
+              No. Solo operators, partners, and owners with teams are all welcome, and
+              we intentionally keep industries varied &mdash; a directory full of the
+              same trade helps nobody. What matters is that you own or lead the
+              business and can speak to its decisions. [ANY ADDITIONAL CRITERIA]
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I join?</summary>
+          <div class="faq__body">
+            <p>
+              There's no form here on purpose. Membership runs through
+              <strong>Church by the Glades</strong>, and our leaders add new members
+              personally so the group stays a room of people who actually know each
+              other.
+            </p>
+            <p>
+              Two ways to start: connect through Church by the Glades and ask about the
+              <em>Jesus Is My CEO</em> lifegroup, or reach out to Kelly or Alex directly
+              using the contact details below. Expect a real conversation before you
+              ever attend &mdash; that's the point.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Is there a cost?</summary>
+          <div class="faq__body">
+            <p>
+              [COST/DUES POLICY — e.g. "There are no dues to be a member. Members
+              cover their own food or materials when applicable."] If anything changes,
+              you'll hear it from a leader before it affects you, never as a surprise.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How does the referral and directory piece work?</summary>
+          <div class="faq__body">
+            <p>
+              Members are listed in the directory with their business, category, and a
+              short description. When a need comes up &mdash; in a meeting or in the
+              group chat &mdash; we look to members first and make a direct
+              introduction.
+            </p>
+            <p>
+              There are no required referral counts, no lead fees, and no obligation to
+              hire another member. A referral here is a personal endorsement, so we'd
+              rather you pass along five you'd stake your name on than fifty you
+              wouldn't. [ANY DIRECTORY GUIDELINES]
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What if I'm not sure I belong in a group like this?</summary>
+          <div class="faq__body">
+            <p>
+              Come and see. Most people arrive unsure &mdash; either they think their
+              business is too small to be worth discussing or too complicated to bring
+              into a faith conversation. Neither has been true yet. Reach out and we'll
+              talk about whether this is the right table for you.
+            </p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== CONTACT ============================== -->
+  <section class="section section--deep" id="contact">
+    <div class="shell">
+      <div class="contact reveal">
+        <p class="eyebrow" style="text-align:center">
+          <span class="eyebrow__num">08</span>Next Steps
+        </p>
+        <h2>There&rsquo;s a seat at the table.</h2>
+        <hr class="rule" style="margin-inline:auto">
+
+        <p class="lede">
+          No form to fill out and no list to get on. Send a note or make a call, and
+          one of us will get back to you personally.
+        </p>
+
+        <!-- No form by design — direct contact only. Replace bracketed values. -->
+        <div class="contact__methods">
+          <a href="mailto:[EMAIL@DOMAIN.COM]">
+            <span class="contact__label">Email</span>
+            <span class="contact__value">[EMAIL@DOMAIN.COM]</span>
+          </a>
+          <a href="tel:[+15550000000]">
+            <span class="contact__label">Call or Text</span>
+            <span class="contact__value">[(555) 000-0000]</span>
+          </a>
+        </div>
+
+        <p class="church">
+          Newer to all of this? Start at <strong>Church by the Glades</strong> and ask
+          about the <em>Jesus Is My CEO</em> lifegroup &mdash; our leaders will take it
+          from there. Next gathering: <strong>[NEXT MEETING DATE]</strong> at
+          <strong>[LOCATION]</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="shell footer__inner">
+    <a class="wordmark" href="#top">Jesus Is My <span>CEO</span></a>
+    <p>A lifegroup of Church by the Glades &middot; &copy; <span id="year">2026</span></p>
+  </div>
+</footer>
+
+<script>
+/* Progressive enhancement only — the page is complete and readable without this. */
+(function () {
+  var root = document.documentElement;
+  root.classList.remove('no-js');
+  root.classList.add('js');
+
+  /* --- Sticky nav state --- */
+  var nav = document.getElementById('nav');
+  var onScroll = function () {
+    nav.classList.toggle('is-stuck', window.scrollY > 80);
+  };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* --- Mobile menu --- */
+  var burger = document.getElementById('burger');
+  var menu = document.getElementById('menu');
+
+  var setMenu = function (open) {
+    burger.setAttribute('aria-expanded', String(open));
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.classList.toggle('is-open', open);
+    document.body.classList.toggle('is-locked', open);
+  };
+
+  burger.addEventListener('click', function () {
+    setMenu(burger.getAttribute('aria-expanded') !== 'true');
+  });
+  menu.addEventListener('click', function (e) {
+    if (e.target.closest('a')) { setMenu(false); }
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+      setMenu(false);
+      burger.focus();
+    }
+  });
+
+  /* --- FAQ: keep one panel open at a time --- */
+  var items = document.querySelectorAll('#faq-list details');
+  items.forEach(function (item) {
+    item.addEventListener('toggle', function () {
+      if (!item.open) { return; }
+      items.forEach(function (other) {
+        if (other !== item) { other.open = false; }
+      });
+    });
+  });
+
+  /* --- Scroll reveal --- */
+  var targets = document.querySelectorAll('.reveal');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (reduced || !('IntersectionObserver' in window)) {
+    targets.forEach(function (el) { el.classList.add('is-visible'); });
+  } else {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) { return; }
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+
+    targets.forEach(function (el, i) {
+      /* Stagger siblings within a grid so cards cascade rather than pop together. */
+      var index = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.style.transitionDelay = Math.min(index, 6) * 60 + 'ms';
+      observer.observe(el);
+    });
+  }
+
+  /* --- Footer year --- */
+  document.getElementById('year').textContent = new Date().getFullYear();
+}());
+</script>
+
+</body>
+</html>
