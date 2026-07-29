@@ -86,7 +86,7 @@ talk through than to read.
 Thanks for considering it,
 
 Kelly [KELLY'S LAST NAME]
-[PHONE] · [EMAIL]
+[PHONE] · jesusismyceolifegroup@gmail.com
 
 **Attachment:** `FDE Foundation Group Facilitator Guide.pdf`
 
