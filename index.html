@@ -377,39 +377,6 @@ body.is-locked { overflow: hidden; }
 .logistics dd { margin: 0; }
 .logistics__item { display: flex; align-items: baseline; }
 
-/* --- Placeholder media blocks ------------------------------------------- */
-
-.ph {
-  position: relative;
-  display: grid;
-  place-items: center;
-  background:
-    linear-gradient(135deg, rgba(184,150,74,0.14) 0%, transparent 42%),
-    linear-gradient(155deg, var(--navy-mid), var(--navy-deep));
-  border: 1px solid rgba(184,150,74,0.3);
-  color: rgba(255,255,255,0.6);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  text-align: center;
-  padding: 1.5rem;
-  overflow: hidden;
-}
-.ph::after {
-  content: "";
-  position: absolute;
-  top: -40%;
-  left: -20%;
-  width: 55%;
-  height: 190%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
-  transform: rotate(18deg);
-  pointer-events: none;
-}
-.ph--wide { aspect-ratio: 4 / 3; }
-.ph--portrait { aspect-ratio: 4 / 5; }
-
 /* --- Real imagery ------------------------------------------------------- */
 /* Ratios match each file's native ratio, so object-fit crops nothing. That
    matters here: the photos have text baked into them (signs, plaques, van
@@ -759,7 +726,15 @@ body.is-locked { overflow: hidden; }
   gap: 0;
 }
 @media (min-width: 520px) { .leader { grid-template-columns: 0.85fr 1.15fr; } }
-.leader__media { border: 0; border-right: 1px solid rgba(184,150,74,0.3); min-height: 300px; }
+.leader__media {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 300px;
+  object-fit: cover;
+  border: 0;
+  border-right: 1px solid rgba(184,150,74,0.3);
+}
 .leader__body { padding: clamp(1.5rem, 3vw, 2.25rem); display: flex; flex-direction: column; }
 .leader h3 { font-size: 1.5rem; color: var(--navy); margin-bottom: 0.4rem; }
 .leader__role {
@@ -771,33 +746,6 @@ body.is-locked { overflow: hidden; }
   margin-bottom: 1.25rem;
 }
 .leader__bio { font-size: 0.9375rem; color: var(--slate); flex: 1; }
-
-/* Bio placeholder: styled as an intentional content slot, not a stray chip.
-   Replace the whole .ph-text block with real bio paragraphs. */
-.ph-text {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
-  height: 100%;
-  min-height: 8.5rem;
-  padding: 1.15rem 1.25rem;
-  background: var(--cream);
-  border: 1px dashed rgba(184,150,74,0.55);
-  border-left: 2px solid var(--gold);
-}
-.ph-text b {
-  font-size: 0.8125rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--gold-ink);
-}
-.ph-text i {
-  font-style: normal;
-  font-size: 0.8125rem;
-  line-height: 1.6;
-  color: var(--slate);
-}
 
 /* --- FAQ ---------------------------------------------------------------- */
 
@@ -1526,39 +1474,49 @@ body.is-locked { overflow: hidden; }
       </div>
 
       <!--
-        Per the group's own answer: Ceiba Accounting and The Balanced Coach are the
-        two facilitators' businesses — these go into the [TITLE — BUSINESS] lines
-        once the full bios arrive. Confirm which facilitator goes with which.
+        Ceiba Accounting and The Balanced Coach are the two facilitators' businesses,
+        but which belongs to Kelly and which to Alex is still unconfirmed. Once known,
+        add "· [Business Name]" to each <p class="leader__role"> line below.
       -->
       <div class="grid grid--2">
         <article class="leader reveal">
-          <div class="ph leader__media">Photo coming soon</div>
+          <img class="leader__media" src="images/leaders/kelly.webp"
+               width="640" height="800" loading="lazy" decoding="async"
+               alt="Kelly, facilitator of the Jesus Is My CEO lifegroup">
           <div class="leader__body">
             <h3>Kelly</h3>
             <p class="leader__role">Facilitator</p>
             <div class="leader__bio">
-              <!-- Replace with two or three sentences: her business and professional
-                   background, how long she's been at Church by the Glades, and why
-                   she leads this group. -->
-              <div class="ph-text">
-                <i>Bio coming soon &mdash; check back before the fall cohort begins.</i>
-              </div>
+              <p>
+                Kelly leads from one conviction: the business isn&rsquo;t hers.
+                It&rsquo;s on loan, and she&rsquo;s the one accountable for how it&rsquo;s
+                run in the meantime. She started this group because she wanted a room
+                where business owners keep each other honest about that &mdash; people
+                who call each other back to leading like Christ does, cheer for each
+                other&rsquo;s companies instead of competing with them, and never let
+                each other forget whose it actually is.
+              </p>
             </div>
           </div>
         </article>
 
         <article class="leader reveal">
-          <div class="ph leader__media">Photo coming soon</div>
+          <img class="leader__media" src="images/leaders/alex.webp"
+               width="640" height="800" loading="lazy" decoding="async"
+               alt="Alex, facilitator of the Jesus Is My CEO lifegroup">
           <div class="leader__body">
             <h3>Alex</h3>
             <p class="leader__role">Facilitator</p>
             <div class="leader__bio">
-              <!-- Replace with two or three sentences: his business and professional
-                   background, how long he's been at Church by the Glades, and why
-                   he leads this group. -->
-              <div class="ph-text">
-                <i>Bio coming soon &mdash; check back before the fall cohort begins.</i>
-              </div>
+              <p>
+                Alex leads from the same conviction Kelly does: everything in the
+                business &mdash; the clients, the money, the decisions &mdash; is
+                borrowed, not owned. He wanted a group where that isn&rsquo;t just a
+                nice idea but something people actually hold each other to: leading
+                their companies the way God asks, backing each other&rsquo;s
+                businesses instead of guarding their own turf, and staying honest
+                about who&rsquo;s really in charge.
+              </p>
             </div>
           </div>
         </article>
