@@ -86,7 +86,7 @@ talk through than to read.
 Thanks for considering it,
 
 Kelly [KELLY'S LAST NAME]
-[PHONE] · jesusismyceolifegroup@gmail.com
+(786) 361-7028 · jesusismyceolifegroup@gmail.com
 
 **Attachment:** `FDE Foundation Group Facilitator Guide.pdf`
 

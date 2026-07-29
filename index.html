@@ -823,14 +823,11 @@ body.is-locked { overflow: hidden; }
 }
 @media (min-width: 620px) { .contact__methods { grid-template-columns: 1fr 1fr; } }
 
-.contact__methods a,
-.contact__methods .contact__box {
+.contact__methods a {
   display: block;
   padding: 1.4rem 1.6rem;
   border: 1px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.035);
-}
-.contact__methods a {
   transition: border-color 0.25s var(--ease), background-color 0.25s var(--ease), transform 0.25s var(--ease);
 }
 .contact__methods a:hover {
@@ -1706,17 +1703,16 @@ body.is-locked { overflow: hidden; }
           personally.
         </p>
 
-        <!-- No form by design — direct contact only. Once a real phone number exists,
-             restore the tel: href the same way the mailto: below was restored. -->
+        <!-- No form by design — direct contact only. -->
         <div class="contact__methods">
           <a href="mailto:jesusismyceolifegroup@gmail.com">
             <span class="contact__label">Email</span>
             <span class="contact__value">jesusismyceolifegroup@gmail.com</span>
           </a>
-          <div class="contact__box">
+          <a href="tel:+17863617028">
             <span class="contact__label">Call or Text</span>
-            <span class="contact__value">Coming soon</span>
-          </div>
+            <span class="contact__value">(786) 361-7028</span>
+          </a>
         </div>
 
         <p class="church">
