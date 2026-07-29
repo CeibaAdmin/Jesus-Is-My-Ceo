@@ -1,10 +1,23 @@
 # Jesus Is My CEO
 
-Landing page for **Jesus Is My CEO** — a lifegroup for Christian business owners and
-entrepreneurs, connected through Church by the Glades. The page serves two purposes at
-once: it explains the discipleship side (Jesus holds authority over our businesses; we
-operate as stewards) and it showcases the group's function as a trusted referral network
-of Christian-owned businesses.
+Landing page for **Jesus Is My CEO** — a 10-week in-person lifegroup for Christian
+business owners and entrepreneurs, running as part of Church by the Glades' fall
+lifegroup semester. It is a registered **Faith Driven Entrepreneur Foundation Group**
+and works through that curriculum's eight sessions.
+
+The page serves two purposes at once: it explains the discipleship side (Jesus holds
+authority over our businesses; we operate as stewards) and it showcases the group's
+trusted referral network of Christian-owned businesses.
+
+### One thing to keep straight when editing
+
+The Faith Driven Entrepreneur guide is explicit that **group time is for the study and
+for each other — networking and business development happen outside the hour**. The page
+is written to match: the session agenda contains no networking segment, and the directory
+section says plainly that referrals move between sessions rather than during them.
+
+If you edit that copy, keep the distinction. Describing referrals as part of the meeting
+would misrepresent the format to someone deciding whether to join.
 
 ## Viewing it
 
@@ -29,7 +42,13 @@ photos. Still outstanding:
 
 | Placeholder | Where | What it needs |
 | --- | --- | --- |
-| `[DAY/TIME]`, `[LOCATION]` | Hero logistics strip, contact section | Meeting day, time, and place |
+| `[DAY/TIME]`, `[LOCATION]` | Hero logistics strip, contact section | Meeting day, time, and place (in person) |
+| `[COHORT START DATE]` | Contact | When the fall cohort begins |
+| `[CHURCH LIFEGROUP SIGNUP LINK]` | FAQ | The church's fall lifegroup registration page |
+| `[FDE LINK]` | Curriculum credit | Official faithdrivenentrepreneur.org URL |
+| `[HOW THE REMAINING WEEKS ARE USED]` | FAQ | 8 curriculum sessions across a 10-week semester — say what fills the other two |
+| `[WHO COVERS THE STUDY GUIDE]` | FAQ | Whether members buy their own participant guide |
+| `[WHAT YOU PLAN TO DO AFTER THE SEMESTER]` | FAQ | Whether the group continues, and how |
 | `[HEADSHOT — KELLY]`, `[HEADSHOT — ALEX]` | Leaders | Professional headshots — the only images still missing |
 | `[KELLY BIO]`, `[ALEX BIO]` | Leaders | Bio copy (replace the whole `div.ph-text` block) |
 | `[TITLE — BUSINESS]` | Leaders | Each leader's role and company |
@@ -46,8 +65,20 @@ swap:
 
 - **Hero tagline** — currently *"Lead your business the way God intended."* Two other
   options sit in a comment directly above it.
-- **Anchor scripture** — currently Psalm 24:1. 1 Corinthians 4:2 and Luke 16:10–12 are
-  in a comment beside it.
+- **Anchor scripture** — currently Psalm 24:1, which lines up with the curriculum's
+  Session 2 ("God Owns My Business"). 1 Corinthians 4:2, Luke 16:10–12, and the guide's
+  own two verses (2 Timothy 2:2 and Hebrews 10:24–25) are in a comment beside it.
+
+## Curriculum attribution
+
+The eight session titles on the page come from the Faith Driven Entrepreneur Foundation
+curriculum, taught by Henry Kaestner and J.D. Greear. **The one-line descriptions under
+each title are ours, not theirs** — the guide's own discussion questions are their
+copyrighted material and are deliberately not reproduced on the page.
+
+Since this is a registered FDE group, the page credits them by name in the curriculum
+section and in the footer. Worth having FDE review the page before it goes wide, given it
+uses their programme name publicly.
 
 ## Images
 

@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Jesus Is My CEO — A Lifegroup for Christian Business Owners</title>
-<meta name="description" content="A lifegroup for Christian business owners and entrepreneurs who lead under God's authority — part discipleship, part trusted referral network. Connected through Church by the Glades.">
+<meta name="description" content="A 10-week lifegroup at Church by the Glades for Christian business owners and entrepreneurs, working through the Faith Driven Entrepreneur Foundation curriculum — plus a trusted referral network of member businesses.">
 <meta name="theme-color" content="#0B1F3A">
 
 <!-- Open Graph / social preview -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="Jesus Is My CEO">
-<meta property="og:description" content="Lead your business the way God intended. A lifegroup and referral network for Christian business owners.">
+<meta property="og:description" content="Lead your business the way God intended. A 10-week Faith Driven Entrepreneur group for Christian business owners at Church by the Glades.">
 <meta property="og:site_name" content="Jesus Is My CEO">
 <meta property="og:image" content="/images/og-cover.jpg">
 <meta property="og:image:width" content="1200">
@@ -577,6 +577,55 @@ body.is-locked { overflow: hidden; }
 .step__icon { color: var(--navy); opacity: 0.5; flex: none; }
 .step h3 { font-size: 1.25rem; color: var(--navy); margin-bottom: 0.65rem; }
 .step p { font-size: 0.9375rem; color: var(--slate); }
+/* Curriculum session list */
+.sessions {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(255,255,255,0.14);
+}
+.sessions li {
+  display: flex;
+  align-items: baseline;
+  gap: clamp(1rem, 3vw, 2rem);
+  padding: clamp(1.15rem, 2.5vw, 1.6rem) 0;
+  border-bottom: 1px solid rgba(255,255,255,0.14);
+}
+.sessions__num {
+  flex: none;
+  font-family: var(--serif);
+  font-size: clamp(1.15rem, 1rem + 0.6vw, 1.6rem);
+  font-variant-numeric: tabular-nums;
+  color: var(--gold);
+  min-width: 2.5ch;
+}
+.sessions h3 {
+  font-size: clamp(1.15rem, 1.05rem + 0.4vw, 1.45rem);
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+.sessions p {
+  font-size: 0.9375rem;
+  color: rgba(255,255,255,0.7);
+  max-width: 68ch;
+}
+@media (min-width: 900px) {
+  .sessions { grid-template-columns: 1fr 1fr; column-gap: clamp(2rem, 4vw, 3.5rem); }
+  /* Two columns need their own top rule, since the shared border-top only spans one */
+  .sessions li:nth-child(2) { border-top: 1px solid rgba(255,255,255,0.14); margin-top: -1px; }
+}
+
+/* Attribution line under the curriculum */
+.credit {
+  margin-top: clamp(2rem, 4vw, 2.75rem);
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.62);
+  max-width: 68ch;
+}
+.credit strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
 .chip {
   align-self: flex-start;
   margin-top: 1.25rem;
@@ -780,6 +829,24 @@ body.is-locked { overflow: hidden; }
   font-size: 0.9688rem;
 }
 
+.faq__list {
+  margin: 0.35rem 0 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.55rem;
+}
+.faq__list li { color: rgba(255,255,255,0.72); }
+.faq__list li::marker { color: var(--gold); }
+.faq__list strong { color: var(--white); font-weight: 600; }
+
+/* Inline text link — needs to be visibly a link inside body copy */
+.inline-link {
+  color: var(--gold-lite);
+  border-bottom: 1px solid rgba(212,181,113,0.5);
+  transition: border-color 0.2s var(--ease);
+}
+.inline-link:hover { border-bottom-color: var(--gold-lite); }
+
 /* --- Contact / footer --------------------------------------------------- */
 
 .contact { text-align: center; max-width: 48rem; margin-inline: auto; }
@@ -884,9 +951,10 @@ body.is-locked { overflow: hidden; }
       <ul class="nav__links">
         <li><a href="#mission">Mission</a></li>
         <li><a href="#stewardship">Stewardship</a></li>
-        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#how-it-works">Format</a></li>
+        <li><a href="#curriculum">Study</a></li>
         <li><a href="#directory">Directory</a></li>
-        <li><a href="#leaders">Leaders</a></li>
+        <li><a href="#leaders">Facilitators</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -904,9 +972,10 @@ body.is-locked { overflow: hidden; }
       <li><a href="#mission">Mission &amp; Vision</a></li>
       <li><a href="#stewardship">Stewardship</a></li>
       <li><a href="#scripture">Scripture</a></li>
-      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#how-it-works">How a Session Runs</a></li>
+      <li><a href="#curriculum">The Study</a></li>
       <li><a href="#directory">Business Directory</a></li>
-      <li><a href="#leaders">Leaders</a></li>
+      <li><a href="#leaders">Facilitators</a></li>
       <li><a href="#faq">FAQ</a></li>
     </ul>
     <a class="btn btn--gold" href="#contact">Get Connected</a>
@@ -918,7 +987,7 @@ body.is-locked { overflow: hidden; }
   <!-- ============================== HERO ============================== -->
   <section class="hero" id="hero">
     <div class="shell hero__inner">
-      <p class="eyebrow">A Lifegroup for Business Owners &amp; Entrepreneurs</p>
+      <p class="eyebrow">A Fall Lifegroup for Business Owners &amp; Entrepreneurs</p>
 
       <h1>Jesus Is<br><em>My CEO</em></h1>
 
@@ -931,9 +1000,10 @@ body.is-locked { overflow: hidden; }
       <p class="hero__tagline">Lead your business the way God intended.</p>
 
       <p class="hero__sub">
-        A community of Christian business owners who run real companies, make real
-        decisions, and answer to a higher authority. Discipleship and referrals,
-        at the same table.
+        Ten weeks with Christian business owners who run real companies, make real
+        decisions, and answer to a higher authority. We work through the Faith Driven
+        Entrepreneur study together &mdash; and keep referring business to each other
+        long after it ends.
       </p>
 
       <div class="hero__actions">
@@ -945,6 +1015,7 @@ body.is-locked { overflow: hidden; }
       <div class="logistics">
         <div class="logistics__item"><dl><dt>When</dt><dd>[DAY/TIME]</dd></dl></div>
         <div class="logistics__item"><dl><dt>Where</dt><dd>[LOCATION]</dd></dl></div>
+        <div class="logistics__item"><dl><dt>Length</dt><dd>10 weeks &middot; Fall semester</dd></dl></div>
         <div class="logistics__item"><dl><dt>Through</dt><dd>Church by the Glades</dd></dl></div>
       </div>
     </div>
@@ -974,7 +1045,7 @@ body.is-locked { overflow: hidden; }
         <p>
           Practically, that means we bring real decisions to a table of people who
           will ask what God is saying before they ask what the market is saying — and
-          who will follow up next month to see whether you actually listened.
+          who will follow up next week to see whether you actually listened.
         </p>
 
         <ul class="pillars">
@@ -1071,6 +1142,16 @@ body.is-locked { overflow: hidden; }
           "Whoever can be trusted with very little can also be trusted with much...
           And if you have not been trustworthy with someone else's property, who will
           give you property of your own?" — Luke 16:10-12
+
+          The Faith Driven Entrepreneur guide leans on two of its own, if you would
+          rather anchor to the curriculum's language:
+
+          "And the things you have heard me say in the presence of many witnesses
+          entrust to reliable people who will also be qualified to teach others."
+          — 2 Timothy 2:2  (the guide's opening verse; it is about multiplication)
+
+          "And let us consider how we may spur one another on toward love and good
+          deeds, not giving up meeting together..." — Hebrews 10:24-25
         -->
         <blockquote cite="https://www.biblegateway.com/passage/?search=Psalm%2024%3A1">
           The earth is the Lord&rsquo;s, and everything in it, the world, and all who
@@ -1091,13 +1172,13 @@ body.is-locked { overflow: hidden; }
   <section class="section" id="how-it-works">
     <div class="shell">
       <div class="section__head reveal">
-        <p class="eyebrow"><span class="eyebrow__num">04</span>How the Group Works</p>
-        <h2>A standing agenda, not a hangout.</h2>
+        <p class="eyebrow"><span class="eyebrow__num">04</span>How a Session Runs</p>
+        <h2>One hour, same shape every week.</h2>
         <hr class="rule">
         <p class="lede">
-          Every gathering follows the same rhythm, so you always know what you're
-          walking into and what you need to bring. Timings below are placeholders
-          &mdash; the shape holds.
+          We follow the Faith Driven Entrepreneur format, so you always know what
+          you&rsquo;re walking into. Watch together, talk honestly, pray. That&rsquo;s it
+          &mdash; no homework to be embarrassed about not doing.
         </p>
       </div>
 
@@ -1107,13 +1188,12 @@ body.is-locked { overflow: hidden; }
             <span class="step__num">01</span>
             <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H19v16H5.5A1.5 1.5 0 0 1 4 18.5v-13Z"/>
-              <path d="M12 8v8M9 11h6"/>
+              <path d="M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7 3C19 15.6 12 20 12 20Z"/>
             </svg>
           </div>
-          <h3>Opening &amp; Devotional</h3>
-          <p>We start in the Word, not in small talk. A short passage and a clear takeaway to carry into the week.</p>
-          <span class="chip">[15 MIN]</span>
+          <h3>Open in Prayer</h3>
+          <p>We start by handing the hour over. Short and unceremonious &mdash; then straight into the work.</p>
+          <span class="chip">1&ndash;2 min</span>
         </article>
 
         <article class="step reveal">
@@ -1121,12 +1201,13 @@ body.is-locked { overflow: hidden; }
             <span class="step__num">02</span>
             <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>
+              <rect x="2.5" y="4.5" width="19" height="13" rx="1.6"/>
+              <path d="M10 8.6l5 2.9-5 2.9V8.6Z"/><path d="M8 20.5h8"/>
             </svg>
           </div>
-          <h3>Business Updates &amp; Needs</h3>
-          <p>Each member gets the floor: what moved, what stalled, and the one thing they need help with right now.</p>
-          <span class="chip">[20 MIN]</span>
+          <h3>Watch Together</h3>
+          <p>The week&rsquo;s teaching from Henry Kaestner and J.D. Greear, plus a story from a working entrepreneur. We watch it in the room, not as homework.</p>
+          <span class="chip">~20 min</span>
         </article>
 
         <article class="step reveal">
@@ -1134,13 +1215,12 @@ body.is-locked { overflow: hidden; }
             <span class="step__num">03</span>
             <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M12 3 3 7.5 12 12l9-4.5L12 3Z"/>
-              <path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/>
+              <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v8a1.5 1.5 0 0 1-1.5 1.5H9l-5 4v-4Z"/>
             </svg>
           </div>
-          <h3>Teaching &amp; Discussion</h3>
-          <p>One topic where scripture and business collide &mdash; pricing, partnerships, hiring, debt, rest &mdash; worked through together.</p>
-          <span class="chip">[25 MIN]</span>
+          <h3>Discuss</h3>
+          <p>The longest stretch, and the point of the whole thing. What landed, what you disagree with, and what it costs you to act on it.</p>
+          <span class="chip">~25 min</span>
         </article>
 
         <article class="step reveal">
@@ -1148,12 +1228,13 @@ body.is-locked { overflow: hidden; }
             <span class="step__num">04</span>
             <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <path d="M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 7.6a4.1 4.1 0 0 1 7 3C19 15.6 12 20 12 20Z"/>
+              <circle cx="7" cy="8" r="2.6"/><circle cx="17" cy="8" r="2.6"/>
+              <path d="M3 19c0-2.4 1.8-4.2 4-4.2s4 1.8 4 4.2M13 19c0-2.4 1.8-4.2 4-4.2s4 1.8 4 4.2"/>
             </svg>
           </div>
-          <h3>Prayer</h3>
-          <p>We pray specifically &mdash; over deals, payroll, families, and the decisions nobody else knows you're carrying.</p>
-          <span class="chip">[15 MIN]</span>
+          <h3>Close in Prayer</h3>
+          <p>We pray over each other&rsquo;s decisions, payroll, families &mdash; and usually somebody other than the facilitator closes us out.</p>
+          <span class="chip">2&ndash;3 min</span>
         </article>
 
         <article class="step reveal">
@@ -1161,13 +1242,12 @@ body.is-locked { overflow: hidden; }
             <span class="step__num">05</span>
             <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <circle cx="7" cy="8" r="2.6"/><circle cx="17" cy="8" r="2.6"/>
-              <path d="M3 19c0-2.4 1.8-4.2 4-4.2s4 1.8 4 4.2M13 19c0-2.4 1.8-4.2 4-4.2s4 1.8 4 4.2"/>
+              <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/>
             </svg>
           </div>
-          <h3>Referrals &amp; Networking</h3>
-          <p>Open floor for connections: who you need to meet, who you can vouch for, and business passed member to member.</p>
-          <span class="chip">[25 MIN]</span>
+          <h3>First &amp; Last Sessions</h3>
+          <p>Both run longer. The first adds introductions and lets us set our own ground rules; the last is for reflecting on what actually changed.</p>
+          <span class="chip">+30 min</span>
         </article>
 
         <article class="step reveal" style="border-top-color: var(--gold)">
@@ -1175,14 +1255,101 @@ body.is-locked { overflow: hidden; }
             <span class="step__num">&mdash;</span>
             <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
                  stroke="currentColor" stroke-width="1.4" aria-hidden="true">
-              <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.5 2"/>
+              <path d="M4 7h16M4 12h16M4 17h10"/>
             </svg>
           </div>
-          <h3>Between Meetings</h3>
-          <p>The work continues in follow-ups, one-on-ones, and referrals that move without waiting for the next gathering.</p>
-          <span class="chip">[ONGOING]</span>
+          <h3>Between Sessions</h3>
+          <p>A note from the facilitator during the week, a group thread that stays alive, and the introductions and referrals that happen off to the side.</p>
+          <span class="chip">Ongoing</span>
         </article>
       </div>
+    </div>
+  </section>
+
+  <!-- ============================== CURRICULUM ============================== -->
+  <!--
+    Session titles are from the Faith Driven Entrepreneur Foundation curriculum.
+    Titles plus our own one-line summaries only — the guide's own discussion
+    questions are their copyrighted material and are deliberately NOT reproduced
+    here. Attribution sits at the foot of this section.
+  -->
+  <section class="section section--navy" id="curriculum">
+    <div class="shell">
+      <div class="section__head reveal">
+        <p class="eyebrow"><span class="eyebrow__num">05</span>The Study</p>
+        <h2>Eight sessions, in order.</h2>
+        <hr class="rule">
+        <p class="lede">
+          We work through the Faith Driven Entrepreneur Foundation study across the
+          semester. Each session is a short film and a long conversation.
+        </p>
+      </div>
+
+      <ol class="sessions reveal">
+        <li>
+          <span class="sessions__num">01</span>
+          <div>
+            <h3>Our Call to Create</h3>
+            <p>Why building a business is itself an act of making, and what that has to do with the God who made things first.</p>
+          </div>
+        </li>
+        <li>
+          <span class="sessions__num">02</span>
+          <div>
+            <h3>God Owns My Business</h3>
+            <p>The session this whole group is built around. Not &ldquo;God gets ten percent and I keep the rest&rdquo; &mdash; He owns the company and you manage it.</p>
+          </div>
+        </li>
+        <li>
+          <span class="sessions__num">03</span>
+          <div>
+            <h3>Don&rsquo;t Worship Work</h3>
+            <p>Ambition without contentment. Which risks are wise to take when success was never promised to you.</p>
+          </div>
+        </li>
+        <li>
+          <span class="sessions__num">04</span>
+          <div>
+            <h3>Excellence Matters</h3>
+            <p>Quality as worship &mdash; and the point where chasing excellence quietly becomes an obstacle to shipping anything.</p>
+          </div>
+        </li>
+        <li>
+          <span class="sessions__num">05</span>
+          <div>
+            <h3>Faithful vs. Wilful</h3>
+            <p>Where your identity actually sits, what habits keep God in front of you, and the uncomfortable question of how you rest.</p>
+          </div>
+        </li>
+        <li>
+          <span class="sessions__num">06</span>
+          <div>
+            <h3>Ministry in Word</h3>
+            <p>Telling the truth about your own story, including the failures &mdash; and what God did with them.</p>
+          </div>
+        </li>
+        <li>
+          <span class="sessions__num">07</span>
+          <div>
+            <h3>Ministry in Deed</h3>
+            <p>The culture you have actually built, and whether your partners, vendors, customers, and staff can tell the difference.</p>
+          </div>
+        </li>
+        <li>
+          <span class="sessions__num">08</span>
+          <div>
+            <h3>Global Movement</h3>
+            <p>Your business as a place people meet Jesus, often without noticing &mdash; and what you do differently from here.</p>
+          </div>
+        </li>
+      </ol>
+
+      <p class="credit reveal">
+        Curriculum by <strong>Faith Driven Entrepreneur</strong>, taught by Henry
+        Kaestner and J.D. Greear. This is a registered Faith Driven Entrepreneur
+        Foundation Group hosted by Church by the Glades.
+        <!-- [FDE LINK] — add the official faithdrivenentrepreneur.org URL -->
+      </p>
     </div>
   </section>
 
@@ -1190,13 +1357,14 @@ body.is-locked { overflow: hidden; }
   <section class="section section--cream" id="directory">
     <div class="shell">
       <div class="section__head reveal">
-        <p class="eyebrow"><span class="eyebrow__num">05</span>Business Directory</p>
+        <p class="eyebrow"><span class="eyebrow__num">06</span>Business Directory</p>
         <h2>Refer inside the room first.</h2>
         <hr class="rule">
         <p class="lede">
-          When a member needs a service, they look here before they look anywhere
-          else. Every listing is a business run by someone whose character you've
-          watched up close.
+          The hour itself is for the study, not for selling. But ten weeks of honest
+          conversation leaves you with something a networking event never will
+          &mdash; a short list of people whose character you have actually watched.
+          The directory is what that becomes.
         </p>
         <p class="badge" style="margin-top:1.75rem">
           [Sample entries — replace with real member businesses]
@@ -1311,10 +1479,12 @@ body.is-locked { overflow: hidden; }
       </div>
 
       <p class="note">
-        <strong>How referrals move:</strong> needs surface during the weekly meeting,
-        a member vouches for someone at this table, and the introduction happens
-        directly &mdash; no lead fees, no quotas, no scripts. The only currency here is
-        a reputation you'd stake your own name on.
+        <strong>How referrals move:</strong> not during the session. Group time stays
+        on the study and on each other, which is the one rule we hold firmly. The
+        introductions happen either side of it &mdash; in the parking lot, in the group
+        thread, over a coffee that week. No lead fees, no quotas, no scripts, and no
+        obligation to hire anyone here. The only currency is a reputation you would
+        stake your own name on.
       </p>
     </div>
   </section>
@@ -1323,25 +1493,29 @@ body.is-locked { overflow: hidden; }
   <section class="section" id="leaders">
     <div class="shell">
       <div class="section__head reveal">
-        <p class="eyebrow"><span class="eyebrow__num">06</span>Leadership</p>
-        <h2>Led by owners, not administrators.</h2>
+        <p class="eyebrow"><span class="eyebrow__num">07</span>Facilitators</p>
+        <h2>Facilitated, not lectured.</h2>
         <hr class="rule">
         <p class="lede">
-          Kelly and Alex co-lead the group &mdash; setting the teaching, guarding the
-          culture, and keeping the referral side honest.
+          Kelly and Alex facilitate. That is a deliberate distinction and the
+          curriculum insists on it: their job is to steer the conversation, keep
+          everyone heard, and hold the group&rsquo;s culture &mdash; not to stand at the
+          front and teach. The teaching comes from the video; the wisdom comes from
+          around the table.
         </p>
       </div>
 
       <!--
-        Kelly and Alex's real professional context (coaching and accounting-related
-        businesses) can be woven into these bios and the [TITLE — BUSINESS] lines later.
+        Per the group's own answer: Ceiba Accounting and The Balanced Coach are the
+        two facilitators' businesses — these go into the [TITLE — BUSINESS] lines
+        once the full bios arrive. Confirm which facilitator goes with which.
       -->
       <div class="grid grid--2">
         <article class="leader reveal">
           <div class="ph leader__media">[HEADSHOT — KELLY]</div>
           <div class="leader__body">
             <h3>Kelly</h3>
-            <p class="leader__role">Co-Leader &middot; [TITLE — BUSINESS]</p>
+            <p class="leader__role">Facilitator &middot; [TITLE — BUSINESS]</p>
             <div class="leader__bio">
               <div class="ph-text">
                 <b>[KELLY BIO]</b>
@@ -1357,7 +1531,7 @@ body.is-locked { overflow: hidden; }
           <div class="ph leader__media">[HEADSHOT — ALEX]</div>
           <div class="leader__body">
             <h3>Alex</h3>
-            <p class="leader__role">Co-Leader &middot; [TITLE — BUSINESS]</p>
+            <p class="leader__role">Facilitator &middot; [TITLE — BUSINESS]</p>
             <div class="leader__bio">
               <div class="ph-text">
                 <b>[ALEX BIO]</b>
@@ -1376,7 +1550,7 @@ body.is-locked { overflow: hidden; }
   <section class="section section--navy" id="faq">
     <div class="shell">
       <div class="section__head section__head--center reveal">
-        <p class="eyebrow"><span class="eyebrow__num">07</span>Questions</p>
+        <p class="eyebrow"><span class="eyebrow__num">08</span>Questions</p>
         <h2>Before you reach out.</h2>
         <hr class="rule">
       </div>
@@ -1389,8 +1563,41 @@ body.is-locked { overflow: hidden; }
               Christian business owners and entrepreneurs who want their faith to
               actually govern how they operate &mdash; not sit beside it. If you carry
               decisions nobody else in your life fully understands, and you want peers
-              who will pray about them and then hold you to what you said, you're the
-              person we built this for.
+              who will pray about them and then hold you to what you said, you&rsquo;re
+              the person we built this for.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How long is the commitment?</summary>
+          <div class="faq__body">
+            <p>
+              Ten weeks, one hour a week, in person &mdash; part of Church by the
+              Glades&rsquo; fall lifegroup semester. Eight of those weeks are the Faith
+              Driven Entrepreneur sessions; the first and last run about thirty minutes
+              longer, for introductions at the start and reflection at the end.
+              [HOW THE REMAINING WEEKS ARE USED]
+            </p>
+            <p>
+              A defined end date is deliberate. You are agreeing to ten weeks, not to
+              something open-ended you have to find a polite way out of.
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What will we actually study?</summary>
+          <div class="faq__body">
+            <p>
+              The Faith Driven Entrepreneur Foundation curriculum &mdash; eight
+              sessions taught by Henry Kaestner and J.D. Greear, each paired with a
+              story from a working entrepreneur. The session list is
+              <a class="inline-link" href="#curriculum">above</a>.
+            </p>
+            <p>
+              We watch each video together in the room rather than as homework. Nobody
+              has to arrive prepared, and nobody has to pretend they watched it.
             </p>
           </div>
         </details>
@@ -1408,19 +1615,36 @@ body.is-locked { overflow: hidden; }
         </details>
 
         <details>
+          <summary>What is expected of me?</summary>
+          <div class="faq__body">
+            <p>
+              We set our own ground rules in week one, but four come with the
+              curriculum and we keep them:
+            </p>
+            <ul class="faq__list">
+              <li><strong>Show up to at least 80% of the sessions.</strong> Community doesn&rsquo;t survive inconsistency.</li>
+              <li><strong>Confidentiality, and the vulnerability that earns.</strong> What is said here stays here.</li>
+              <li><strong>Respect for different theological traditions.</strong> We come from various church backgrounds and look for Gospel unity across them.</li>
+              <li><strong>Group time stays on the study and each other.</strong> Business development happens outside the hour.</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
           <summary>How do I join?</summary>
           <div class="faq__body">
             <p>
-              There's no form here on purpose. Membership runs through
-              <strong>Church by the Glades</strong>, and our leaders add new members
-              personally so the group stays a room of people who actually know each
-              other.
+              There&rsquo;s no form here on purpose. Registration runs through
+              <strong>Church by the Glades</strong> with the rest of the fall
+              lifegroups, and the facilitators add members personally so the group
+              stays a room of people who actually know each other.
+              [CHURCH LIFEGROUP SIGNUP LINK]
             </p>
             <p>
-              Two ways to start: connect through Church by the Glades and ask about the
-              <em>Jesus Is My CEO</em> lifegroup, or reach out to Kelly or Alex directly
-              using the contact details below. Expect a real conversation before you
-              ever attend &mdash; that's the point.
+              Two ways to start: sign up through Church by the Glades and ask for the
+              <em>Jesus Is My CEO</em> group, or reach out to Kelly or Alex directly
+              using the details below. Expect a real conversation before the first
+              session &mdash; that&rsquo;s the point.
             </p>
           </div>
         </details>
@@ -1430,11 +1654,13 @@ body.is-locked { overflow: hidden; }
           <div class="faq__body">
             <!--
               Example wording: "There are no dues to be a member. Members cover their
-              own food or materials when applicable."
+              own participant study guide and any food."
             -->
             <p>
-              [COST/DUES POLICY] If anything changes, you'll hear it from a leader
-              before it affects you, never as a surprise.
+              [COST/DUES POLICY] The study uses a participant guide alongside the
+              videos &mdash; [WHO COVERS THE STUDY GUIDE]. If anything changes,
+              you&rsquo;ll hear it from a facilitator before it affects you, never as a
+              surprise.
             </p>
           </div>
         </details>
@@ -1444,27 +1670,46 @@ body.is-locked { overflow: hidden; }
           <div class="faq__body">
             <p>
               Members are listed in the directory with their business, category, and a
-              short description. When a need comes up &mdash; in a meeting or in the
-              group chat &mdash; we look to members first and make a direct
-              introduction.
+              short description. When a need comes up, we look to members first and
+              make a direct introduction.
             </p>
             <p>
-              There are no required referral counts, no lead fees, and no obligation to
-              hire another member. A referral here is a personal endorsement, so we'd
-              rather you pass along five you'd stake your name on than fifty you
-              wouldn't. [ANY DIRECTORY GUIDELINES]
+              What we don&rsquo;t do is spend the session on it. Group time is for the
+              study and for each other &mdash; the referrals happen in the week, in the
+              group thread, or over coffee afterwards. There are no required referral
+              counts, no lead fees, and no obligation to hire another member. A
+              referral here is a personal endorsement, so we&rsquo;d rather you pass
+              along five you&rsquo;d stake your name on than fifty you wouldn&rsquo;t.
+              [ANY DIRECTORY GUIDELINES]
             </p>
           </div>
         </details>
 
         <details>
-          <summary>What if I'm not sure I belong in a group like this?</summary>
+          <summary>What happens when the ten weeks are up?</summary>
+          <div class="faq__body">
+            <p>
+              The relationships are meant to outlast the study, and the directory
+              doesn&rsquo;t expire when the semester does. In the final session we talk
+              about what comes next as a group &mdash; whether to keep meeting, and who
+              is ready to facilitate the next cohort.
+            </p>
+            <p>
+              That last part is built into the curriculum on purpose: the people it
+              works on are expected to go and lead it for someone else.
+              [WHAT YOU PLAN TO DO AFTER THE SEMESTER]
+            </p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What if I&rsquo;m not sure I belong in a group like this?</summary>
           <div class="faq__body">
             <p>
               Come and see. Most people arrive unsure &mdash; either they think their
               business is too small to be worth discussing or too complicated to bring
-              into a faith conversation. Neither has been true yet. Reach out and we'll
-              talk about whether this is the right table for you.
+              into a faith conversation. Neither has been true yet. Reach out and
+              we&rsquo;ll talk about whether this is the right table for you.
             </p>
           </div>
         </details>
@@ -1477,14 +1722,15 @@ body.is-locked { overflow: hidden; }
     <div class="shell">
       <div class="contact reveal">
         <p class="eyebrow" style="text-align:center">
-          <span class="eyebrow__num">08</span>Next Steps
+          <span class="eyebrow__num">09</span>Next Steps
         </p>
         <h2>There&rsquo;s a seat at the table.</h2>
         <hr class="rule" style="margin-inline:auto">
 
         <p class="lede">
-          No form to fill out and no list to get on. Send a note or make a call, and
-          one of us will get back to you personally.
+          Ten weeks, starting this fall. No form to fill out and no list to get on
+          &mdash; send a note or make a call, and one of us will get back to you
+          personally.
         </p>
 
         <!-- No form by design — direct contact only. Replace bracketed values. -->
@@ -1501,9 +1747,9 @@ body.is-locked { overflow: hidden; }
 
         <p class="church">
           Newer to all of this? Start at <strong>Church by the Glades</strong> and ask
-          about the <em>Jesus Is My CEO</em> lifegroup &mdash; our leaders will take it
-          from there. Next gathering: <strong>[NEXT MEETING DATE]</strong> at
-          <strong>[LOCATION]</strong>.
+          about the <em>Jesus Is My CEO</em> lifegroup &mdash; the facilitators will
+          take it from there. The fall cohort begins
+          <strong>[COHORT START DATE]</strong> at <strong>[LOCATION]</strong>.
         </p>
       </div>
     </div>
@@ -1514,7 +1760,10 @@ body.is-locked { overflow: hidden; }
 <footer class="footer">
   <div class="shell footer__inner">
     <a class="wordmark" href="#top">Jesus Is My <span>CEO</span></a>
-    <p>A lifegroup of Church by the Glades &middot; &copy; <span id="year">2026</span></p>
+    <p>
+      A lifegroup of Church by the Glades &middot; Faith Driven Entrepreneur
+      Foundation curriculum &middot; &copy; <span id="year">2026</span>
+    </p>
   </div>
 </footer>
 
