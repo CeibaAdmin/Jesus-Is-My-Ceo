@@ -67,11 +67,77 @@ renders completely, and animations are suppressed automatically for anyone with
 the Glades and added by the leaders, so every "join" path points to email, phone, or the
 church.
 
-## Hosting
+## Branches
 
-Any static host works. Two easy options:
+Two branches, and only two:
 
-- **GitHub Pages** — Settings → Pages → deploy from branch, root folder. `index.html`
-  is served automatically.
-- **Netlify / Cloudflare Pages** — drag the folder into the dashboard, or connect the
-  repo with no build command and the repo root as the publish directory.
+| Branch | Role |
+| --- | --- |
+| `main` | Production. What Vercel deploys to the live domain. Never commit here directly. |
+| `dev` | Where the work happens. Every change lands here first and gets a Vercel preview URL. |
+
+Normal workflow:
+
+```sh
+git checkout dev
+# ...make changes...
+git add -A && git commit -m "Update leader bios"
+git push origin dev          # Vercel builds a preview URL for this commit
+```
+
+When the preview looks right, promote it to production:
+
+```sh
+git checkout main
+git merge --ff-only dev
+git push origin main         # Vercel deploys to the live domain
+git checkout dev             # go back to dev for the next change
+```
+
+`--ff-only` keeps history linear and fails loudly if `main` has drifted, which it
+shouldn't if nobody commits there directly.
+
+## Deploying to Vercel
+
+The site is static — no build step, no dependencies, no server. First-time setup:
+
+1. In Vercel, **Add New → Project** and import this repository.
+2. Framework Preset: **Other**. Leave Build Command empty and Output Directory as the
+   repo root. There is nothing to install or compile.
+3. Under **Settings → Git**, confirm the Production Branch is **`main`**.
+4. Deploy.
+
+After that it's automatic: pushes to `main` deploy to production, pushes to `dev` get
+their own preview URL. To add a custom domain, use **Settings → Domains**.
+
+To preview a production build locally, the Vercel CLI reads `vercel.json` the same way
+the platform does:
+
+```sh
+npx vercel dev
+```
+
+### What `vercel.json` does
+
+- **Security headers** on every response: `nosniff`, a `Referrer-Policy`, a
+  `Permissions-Policy` denying camera/mic/geolocation, and a Content Security Policy.
+- **`Cache-Control: max-age=0, must-revalidate`** on the HTML, so edits to bracketed
+  copy appear immediately instead of sitting in a CDN cache.
+- **`cleanUrls`** so `/index.html` also serves at `/`.
+
+Two things to know about the CSP if you extend the page later:
+
+- It allows inline `<style>` and `<script>` (the page needs both) but blocks scripts and
+  styles loaded from other domains. If you add an analytics snippet or a font from a CDN,
+  add that host to `script-src` / `style-src` / `font-src` or it will be blocked.
+- Images are limited to `'self'` and `data:` URIs. Committing photos to this repo works
+  as-is; hot-linking images from another domain needs that host added to `img-src`.
+- `form-action 'none'` matches the no-signup-form design. If a form is ever added, that
+  directive has to change too.
+
+## Other hosts
+
+Nothing here is Vercel-specific except `vercel.json`, which other platforms ignore.
+The same files work on Netlify, Cloudflare Pages, or GitHub Pages — connect the repo
+with no build command and the repo root as the publish directory. You'd need to
+re-create the headers in that platform's own config to keep them.
