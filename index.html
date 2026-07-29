@@ -12,7 +12,17 @@
 <meta property="og:title" content="Jesus Is My CEO">
 <meta property="og:description" content="Lead your business the way God intended. A lifegroup and referral network for Christian business owners.">
 <meta property="og:site_name" content="Jesus Is My CEO">
-<!-- [OG IMAGE URL] — add a 1200x630 image once branding art exists -->
+<meta property="og:image" content="/images/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Business owners gathered around a café table with open Bibles and coffee">
+<meta name="twitter:card" content="summary_large_image">
+<!--
+  [DOMAIN] still needed: the Open Graph spec wants an ABSOLUTE og:image URL.
+  Slack and LinkedIn usually resolve the root-relative path above; Facebook is
+  unreliable about it. Once the domain exists, change og:image to
+  https://<domain>/images/og-cover.jpg and add og:url + <link rel="canonical">.
+-->
 
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230B1F3A'/><text x='50' y='68' font-size='52' font-family='Georgia,serif' fill='%23B8964A' text-anchor='middle'>J</text></svg>">
 
@@ -400,6 +410,19 @@ body.is-locked { overflow: hidden; }
 .ph--wide { aspect-ratio: 4 / 3; }
 .ph--portrait { aspect-ratio: 4 / 5; }
 
+/* --- Real imagery ------------------------------------------------------- */
+/* Ratios match each file's native ratio, so object-fit crops nothing. That
+   matters here: the photos have text baked into them (signs, plaques, van
+   livery) that a tighter crop would cut through. */
+
+.media {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+  border: 1px solid var(--line);
+}
+
 /* --- Mission ------------------------------------------------------------ */
 
 .split {
@@ -572,10 +595,26 @@ body.is-locked { overflow: hidden; }
   position: relative;
   background: var(--white);
   border: 1px solid var(--line);
-  padding: clamp(1.4rem, 3vw, 1.85rem);
   display: flex;
   flex-direction: column;
   transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease);
+}
+/* Category photo. 3:2 is the files' native ratio, so nothing is cropped. */
+.card__media {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  border-bottom: 1px solid var(--line);
+}
+/* Padding lives here rather than on .card so the photo can go edge to edge.
+   This is also the flex column that .card__link's margin-top:auto pins against. */
+.card__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.4rem, 3vw, 1.85rem);
 }
 .card::before {
   content: "";
@@ -586,6 +625,7 @@ body.is-locked { overflow: hidden; }
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s var(--ease);
+  z-index: 2;              /* keep the hover rule above the photo */
 }
 .card:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -22px rgba(11,31,58,0.35); }
 .card:hover::before { transform: scaleX(1); }
@@ -597,6 +637,10 @@ body.is-locked { overflow: hidden; }
   text-transform: uppercase;
   color: var(--gold-ink);
   margin-bottom: 0.85rem;
+  /* Reserve two lines. Longer labels ("Accounting & Tax") wrap in a narrow
+     column while short ones don't; without this the business names sit at
+     different heights across a row. */
+  min-height: 3.4em;
 }
 .card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 0.3rem; }
 .card__owner {
@@ -954,8 +998,14 @@ body.is-locked { overflow: hidden; }
       </div>
 
       <div class="reveal">
-        <!-- Swap for a real photo: boardroom / group around a table -->
-        <div class="ph ph--wide">[PHOTO — GROUP AT THE TABLE]</div>
+        <!--
+          Stock imagery, not a photo of the actual lifegroup — the alt text is worded
+          so it doesn't claim otherwise. Swap in a real photo of the group when there
+          is one; keep the width/height attributes so the layout doesn't shift.
+        -->
+        <img class="media" src="images/group-meeting.webp" width="1120" height="896"
+             loading="lazy" decoding="async"
+             alt="Business owners gathered around a café table with open Bibles, notebooks and coffee">
       </div>
     </div>
   </section>
@@ -1156,67 +1206,107 @@ body.is-locked { overflow: hidden; }
       <!-- SAMPLE DIRECTORY ENTRIES: all 8 cards below are placeholder data -->
       <div class="grid grid--4">
         <article class="card reveal">
-          <p class="card__cat">Real Estate</p>
-          <h3>[Cornerstone Realty Group]</h3>
-          <p class="card__owner">[Marcus Delgado]</p>
-          <p>Residential buying and selling across Broward and Palm Beach counties.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/real-estate.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Modern two-storey South Florida home lit warmly at dusk, framed by palm trees">
+          <div class="card__body">
+            <p class="card__cat">Real Estate</p>
+            <h3>[Cornerstone Realty Group]</h3>
+            <p class="card__owner">[Marcus Delgado]</p>
+            <p>Residential buying and selling across Broward and Palm Beach counties.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
 
         <article class="card reveal">
-          <p class="card__cat">Accounting &amp; Tax</p>
-          <h3>[Ledger &amp; Light CPA]</h3>
-          <p class="card__owner">[Priya Raman]</p>
-          <p>Tax strategy, bookkeeping, and CFO support for owner-operated companies.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/accounting-tax.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Accountant&rsquo;s desk with financial reports, a laptop showing a profit-and-loss dashboard, and tax binders">
+          <div class="card__body">
+            <p class="card__cat">Accounting &amp; Tax</p>
+            <h3>[Ledger &amp; Light CPA]</h3>
+            <p class="card__owner">[Priya Raman]</p>
+            <p>Tax strategy, bookkeeping, and CFO support for owner-operated companies.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
 
         <article class="card reveal">
-          <p class="card__cat">Legal</p>
-          <h3>[Hartwell Business Law]</h3>
-          <p class="card__owner">[Dana Hartwell]</p>
-          <p>Contracts, entity formation, and dispute resolution for small businesses.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/legal.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Attorney&rsquo;s office desk with brass scales of justice, Florida statute volumes and a case brief">
+          <div class="card__body">
+            <p class="card__cat">Legal</p>
+            <h3>[Hartwell Business Law]</h3>
+            <p class="card__owner">[Dana Hartwell]</p>
+            <p>Contracts, entity formation, and dispute resolution for small businesses.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
 
         <article class="card reveal">
-          <p class="card__cat">Home Services</p>
-          <h3>[TrueNorth Air &amp; Plumbing]</h3>
-          <p class="card__owner">[Eli Navarro]</p>
-          <p>HVAC installs, repairs, and maintenance plans for homes and offices.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/home-services.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Uniformed technician shaking hands with a homeowner beside a service van">
+          <div class="card__body">
+            <p class="card__cat">Home Services</p>
+            <h3>[TrueNorth Air &amp; Plumbing]</h3>
+            <p class="card__owner">[Eli Navarro]</p>
+            <p>HVAC installs, repairs, and maintenance plans for homes and offices.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
 
         <article class="card reveal">
-          <p class="card__cat">Health &amp; Wellness</p>
-          <h3>[Restore Physical Therapy]</h3>
-          <p class="card__owner">[Tasha Boone]</p>
-          <p>Orthopedic rehab and mobility coaching for desk-bound professionals.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/health-wellness.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Wellness consultant meeting a client across a table in a plant-filled studio">
+          <div class="card__body">
+            <p class="card__cat">Health &amp; Wellness</p>
+            <h3>[Restore Physical Therapy]</h3>
+            <p class="card__owner">[Tasha Boone]</p>
+            <p>Orthopedic rehab and mobility coaching for desk-bound professionals.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
 
         <article class="card reveal">
-          <p class="card__cat">Marketing &amp; Brand</p>
-          <h3>[Fieldpost Creative]</h3>
-          <p class="card__owner">[Jordan Weir]</p>
-          <p>Websites, brand systems, and lead generation for service businesses.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/marketing-brand.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Creative team reviewing brand boards and colour palettes around a studio table">
+          <div class="card__body">
+            <p class="card__cat">Marketing &amp; Brand</p>
+            <h3>[Fieldpost Creative]</h3>
+            <p class="card__owner">[Jordan Weir]</p>
+            <p>Websites, brand systems, and lead generation for service businesses.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
 
         <article class="card reveal">
-          <p class="card__cat">Insurance</p>
-          <h3>[Anchor Risk Advisors]</h3>
-          <p class="card__owner">[Sofia Marchetti]</p>
-          <p>Commercial, life, and health coverage reviewed without the sales pitch.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/insurance.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Insurance advisor reviewing coverage options with a client in a bright office">
+          <div class="card__body">
+            <p class="card__cat">Insurance</p>
+            <h3>[Anchor Risk Advisors]</h3>
+            <p class="card__owner">[Sofia Marchetti]</p>
+            <p>Commercial, life, and health coverage reviewed without the sales pitch.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
 
         <article class="card reveal">
-          <p class="card__cat">Construction</p>
-          <h3>[Beacon Build Co.]</h3>
-          <p class="card__owner">[Wes Coleman]</p>
-          <p>Remodels, buildouts, and commercial tenant improvements on schedule.</p>
-          <a class="card__link" href="#contact">Contact &rarr;</a>
+          <img class="card__media" src="images/directory/construction.webp"
+               width="700" height="467" loading="lazy" decoding="async"
+               alt="Two contractors in hard hats reviewing blueprints at a residential build site">
+          <div class="card__body">
+            <p class="card__cat">Construction</p>
+            <h3>[Beacon Build Co.]</h3>
+            <p class="card__owner">[Wes Coleman]</p>
+            <p>Remodels, buildouts, and commercial tenant improvements on schedule.</p>
+            <a class="card__link" href="#contact">Contact &rarr;</a>
+          </div>
         </article>
       </div>
 

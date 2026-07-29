@@ -23,13 +23,14 @@ left in the file:
 grep -o '\[[^]]*\]' index.html | sort -u
 ```
 
-What's waiting on real copy:
+Already supplied: the mission-section group photo and all 8 directory category
+photos. Still outstanding:
+
 
 | Placeholder | Where | What it needs |
 | --- | --- | --- |
 | `[DAY/TIME]`, `[LOCATION]` | Hero logistics strip, contact section | Meeting day, time, and place |
-| `[PHOTO — GROUP AT THE TABLE]` | Mission section | Replace the `div.ph` with an `<img>` |
-| `[HEADSHOT — KELLY]`, `[HEADSHOT — ALEX]` | Leaders | Professional headshots |
+| `[HEADSHOT — KELLY]`, `[HEADSHOT — ALEX]` | Leaders | Professional headshots — the only images still missing |
 | `[KELLY BIO]`, `[ALEX BIO]` | Leaders | Bio copy (replace the whole `div.ph-text` block) |
 | `[TITLE — BUSINESS]` | Leaders | Each leader's role and company |
 | Directory cards | Business Directory | All 8 entries are **sample data** — swap in real member businesses and remove the `[Sample entries]` badge |
@@ -38,7 +39,7 @@ What's waiting on real copy:
 | `[ANY ADDITIONAL CRITERIA]`, `[ANY DIRECTORY GUIDELINES]` | FAQ | Optional extra detail |
 | `[EMAIL@DOMAIN.COM]`, `[(555) 000-0000]` | Contact | Update both the visible text **and** the `mailto:` / `tel:` `href` |
 | `[NEXT MEETING DATE]` | Contact | Next gathering date |
-| `[OG IMAGE URL]` | `<head>` | 1200×630 social preview image |
+| `[DOMAIN]` | `<head>` | Needed for an absolute `og:image`, plus `og:url` and a canonical link |
 
 Two things have alternates already written into the code as HTML comments, ready to
 swap:
@@ -47,6 +48,43 @@ swap:
   options sit in a comment directly above it.
 - **Anchor scripture** — currently Psalm 24:1. 1 Corinthians 4:2 and Luke 16:10–12 are
   in a comment beside it.
+
+## Images
+
+Two directories, with different jobs:
+
+| Path | Contents | Deployed? |
+| --- | --- | --- |
+| `images/` | Optimized WebP the page actually loads, plus `og-cover.jpg` | Yes |
+| `assets/source/` | Full-resolution PNG masters, kept for future re-cropping | **No** — excluded by `.vercelignore` |
+
+The masters total ~21 MB (2–3 MB each); the optimized set is **628 KB**. Serving the
+originals would have made the page unusable on a phone, so nothing in `assets/source/`
+is ever deployed.
+
+Sizes were chosen for the widest case each image actually renders at, doubled for
+high-DPI screens:
+
+- `images/directory/*.webp` — 700×467 (3:2, the masters' native ratio, so nothing is cropped)
+- `images/group-meeting.webp` — 1120×896 (5:4 native)
+- `images/og-cover.jpg` — 1200×630, cropped from the group photo and biased upward so
+  the standing figures' heads aren't cut off. JPEG rather than WebP because some social
+  crawlers still don't decode WebP.
+
+### Re-encoding after you add or replace a master
+
+There is no `cwebp`, ImageMagick, `vips`, Pillow, or `sharp` in this project — encoding
+runs through headless Chromium's canvas, which produces WebP natively and needs nothing
+installed. It's a one-time operation per image, not a build step, so no script is
+committed. Ask Claude to re-encode and it will regenerate from `assets/source/`.
+
+If you replace an image yourself, keep the `width`/`height` attributes on the `<img>` in
+step with the new file. They're what keeps the page from shifting as images load
+(verified: card heights are identical before and after images finish loading).
+
+Every `<img>` also carries `loading="lazy"`, `decoding="async"`, and alt text that
+describes the scene rather than naming a business — the directory photos illustrate the
+*category*, not the specific company listed on the card.
 
 ## Design notes
 
@@ -130,6 +168,9 @@ npx vercel dev
 - **`Cache-Control: max-age=0, must-revalidate`** on the HTML, so edits to bracketed
   copy appear immediately instead of sitting in a CDN cache.
 - **`cleanUrls`** so `/index.html` also serves at `/`.
+
+`.vercelignore` keeps `assets/source/` out of the deployment, so the 21 MB of masters
+never reach the CDN.
 
 Three things to know about the CSP if you extend the page later:
 
