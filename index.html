@@ -690,6 +690,21 @@ body.is-locked { overflow: hidden; }
      column while short ones don't; without this the business names sit at
      different heights across a row. */
   min-height: 3.4em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+/* Marks a directory card as an illustrative example rather than a real member. */
+.card__example {
+  flex: none;
+  border: 1px dashed var(--gold);
+  background: rgba(184,150,74,0.09);
+  color: var(--gold-ink);
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  padding: 0.15rem 0.4rem;
+  white-space: nowrap;
 }
 .card h3 { font-size: 1.2rem; color: var(--navy); margin-bottom: 0.3rem; }
 .card__owner {
@@ -860,11 +875,14 @@ body.is-locked { overflow: hidden; }
 }
 @media (min-width: 620px) { .contact__methods { grid-template-columns: 1fr 1fr; } }
 
-.contact__methods a {
+.contact__methods a,
+.contact__methods .contact__box {
   display: block;
   padding: 1.4rem 1.6rem;
   border: 1px solid rgba(255,255,255,0.18);
   background: rgba(255,255,255,0.035);
+}
+.contact__methods a {
   transition: border-color 0.25s var(--ease), background-color 0.25s var(--ease), transform 0.25s var(--ease);
 }
 .contact__methods a:hover {
@@ -1011,10 +1029,10 @@ body.is-locked { overflow: hidden; }
         <a class="btn btn--ghost" href="#how-it-works">How It Works</a>
       </div>
 
-      <!-- Logistics: replace the bracketed placeholders with real details -->
+      <!-- Replace with the real day/time and location once confirmed -->
       <div class="logistics">
-        <div class="logistics__item"><dl><dt>When</dt><dd>[DAY/TIME]</dd></dl></div>
-        <div class="logistics__item"><dl><dt>Where</dt><dd>[LOCATION]</dd></dl></div>
+        <div class="logistics__item"><dl><dt>When</dt><dd>Details coming soon</dd></dl></div>
+        <div class="logistics__item"><dl><dt>Where</dt><dd>Details coming soon</dd></dl></div>
         <div class="logistics__item"><dl><dt>Length</dt><dd>10 weeks &middot; Fall semester</dd></dl></div>
         <div class="logistics__item"><dl><dt>Through</dt><dd>Church by the Glades</dd></dl></div>
       </div>
@@ -1367,20 +1385,22 @@ body.is-locked { overflow: hidden; }
           The directory is what that becomes.
         </p>
         <p class="badge" style="margin-top:1.75rem">
-          [Sample entries — replace with real member businesses]
+          Illustrative examples — real member businesses will replace these once the group is running
         </p>
       </div>
 
-      <!-- SAMPLE DIRECTORY ENTRIES: all 8 cards below are placeholder data -->
+      <!-- These 8 cards are intentionally fictional examples, kept (not removed) per the
+           group's decision — each carries a visible "Example" tag below so nothing here
+           reads as an error. Replace with real member businesses as the group fills up. -->
       <div class="grid grid--4">
         <article class="card reveal">
           <img class="card__media" src="images/directory/real-estate.webp"
                width="700" height="467" loading="lazy" decoding="async"
                alt="Modern two-storey South Florida home lit warmly at dusk, framed by palm trees">
           <div class="card__body">
-            <p class="card__cat">Real Estate</p>
-            <h3>[Cornerstone Realty Group]</h3>
-            <p class="card__owner">[Marcus Delgado]</p>
+            <p class="card__cat">Real Estate <span class="card__example">Example</span></p>
+            <h3>Cornerstone Realty Group</h3>
+            <p class="card__owner">Marcus Delgado</p>
             <p>Residential buying and selling across Broward and Palm Beach counties.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1391,9 +1411,9 @@ body.is-locked { overflow: hidden; }
                width="700" height="467" loading="lazy" decoding="async"
                alt="Accountant&rsquo;s desk with financial reports, a laptop showing a profit-and-loss dashboard, and tax binders">
           <div class="card__body">
-            <p class="card__cat">Accounting &amp; Tax</p>
-            <h3>[Ledger &amp; Light CPA]</h3>
-            <p class="card__owner">[Priya Raman]</p>
+            <p class="card__cat">Accounting &amp; Tax <span class="card__example">Example</span></p>
+            <h3>Ledger &amp; Light CPA</h3>
+            <p class="card__owner">Priya Raman</p>
             <p>Tax strategy, bookkeeping, and CFO support for owner-operated companies.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1404,9 +1424,9 @@ body.is-locked { overflow: hidden; }
                width="700" height="467" loading="lazy" decoding="async"
                alt="Attorney&rsquo;s office desk with brass scales of justice, Florida statute volumes and a case brief">
           <div class="card__body">
-            <p class="card__cat">Legal</p>
-            <h3>[Hartwell Business Law]</h3>
-            <p class="card__owner">[Dana Hartwell]</p>
+            <p class="card__cat">Legal <span class="card__example">Example</span></p>
+            <h3>Hartwell Business Law</h3>
+            <p class="card__owner">Dana Hartwell</p>
             <p>Contracts, entity formation, and dispute resolution for small businesses.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1417,9 +1437,9 @@ body.is-locked { overflow: hidden; }
                width="700" height="467" loading="lazy" decoding="async"
                alt="Uniformed technician shaking hands with a homeowner beside a service van">
           <div class="card__body">
-            <p class="card__cat">Home Services</p>
-            <h3>[TrueNorth Air &amp; Plumbing]</h3>
-            <p class="card__owner">[Eli Navarro]</p>
+            <p class="card__cat">Home Services <span class="card__example">Example</span></p>
+            <h3>TrueNorth Air &amp; Plumbing</h3>
+            <p class="card__owner">Eli Navarro</p>
             <p>HVAC installs, repairs, and maintenance plans for homes and offices.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1430,9 +1450,9 @@ body.is-locked { overflow: hidden; }
                width="700" height="467" loading="lazy" decoding="async"
                alt="Wellness consultant meeting a client across a table in a plant-filled studio">
           <div class="card__body">
-            <p class="card__cat">Health &amp; Wellness</p>
-            <h3>[Restore Physical Therapy]</h3>
-            <p class="card__owner">[Tasha Boone]</p>
+            <p class="card__cat">Health &amp; Wellness <span class="card__example">Example</span></p>
+            <h3>Restore Physical Therapy</h3>
+            <p class="card__owner">Tasha Boone</p>
             <p>Orthopedic rehab and mobility coaching for desk-bound professionals.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1443,9 +1463,9 @@ body.is-locked { overflow: hidden; }
                width="700" height="467" loading="lazy" decoding="async"
                alt="Creative team reviewing brand boards and colour palettes around a studio table">
           <div class="card__body">
-            <p class="card__cat">Marketing &amp; Brand</p>
-            <h3>[Fieldpost Creative]</h3>
-            <p class="card__owner">[Jordan Weir]</p>
+            <p class="card__cat">Marketing &amp; Brand <span class="card__example">Example</span></p>
+            <h3>Fieldpost Creative</h3>
+            <p class="card__owner">Jordan Weir</p>
             <p>Websites, brand systems, and lead generation for service businesses.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1456,9 +1476,9 @@ body.is-locked { overflow: hidden; }
                width="700" height="467" loading="lazy" decoding="async"
                alt="Insurance advisor reviewing coverage options with a client in a bright office">
           <div class="card__body">
-            <p class="card__cat">Insurance</p>
-            <h3>[Anchor Risk Advisors]</h3>
-            <p class="card__owner">[Sofia Marchetti]</p>
+            <p class="card__cat">Insurance <span class="card__example">Example</span></p>
+            <h3>Anchor Risk Advisors</h3>
+            <p class="card__owner">Sofia Marchetti</p>
             <p>Commercial, life, and health coverage reviewed without the sales pitch.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1469,9 +1489,9 @@ body.is-locked { overflow: hidden; }
                width="700" height="467" loading="lazy" decoding="async"
                alt="Two contractors in hard hats reviewing blueprints at a residential build site">
           <div class="card__body">
-            <p class="card__cat">Construction</p>
-            <h3>[Beacon Build Co.]</h3>
-            <p class="card__owner">[Wes Coleman]</p>
+            <p class="card__cat">Construction <span class="card__example">Example</span></p>
+            <h3>Beacon Build Co.</h3>
+            <p class="card__owner">Wes Coleman</p>
             <p>Remodels, buildouts, and commercial tenant improvements on schedule.</p>
             <a class="card__link" href="#contact">Contact &rarr;</a>
           </div>
@@ -1512,32 +1532,32 @@ body.is-locked { overflow: hidden; }
       -->
       <div class="grid grid--2">
         <article class="leader reveal">
-          <div class="ph leader__media">[HEADSHOT — KELLY]</div>
+          <div class="ph leader__media">Photo coming soon</div>
           <div class="leader__body">
             <h3>Kelly</h3>
-            <p class="leader__role">Facilitator &middot; [TITLE — BUSINESS]</p>
+            <p class="leader__role">Facilitator</p>
             <div class="leader__bio">
+              <!-- Replace with two or three sentences: her business and professional
+                   background, how long she's been at Church by the Glades, and why
+                   she leads this group. -->
               <div class="ph-text">
-                <b>[KELLY BIO]</b>
-                <i>Two or three sentences: her business and professional background,
-                  how long she&rsquo;s been at Church by the Glades, and why she leads
-                  this group.</i>
+                <i>Bio coming soon &mdash; check back before the fall cohort begins.</i>
               </div>
             </div>
           </div>
         </article>
 
         <article class="leader reveal">
-          <div class="ph leader__media">[HEADSHOT — ALEX]</div>
+          <div class="ph leader__media">Photo coming soon</div>
           <div class="leader__body">
             <h3>Alex</h3>
-            <p class="leader__role">Facilitator &middot; [TITLE — BUSINESS]</p>
+            <p class="leader__role">Facilitator</p>
             <div class="leader__bio">
+              <!-- Replace with two or three sentences: his business and professional
+                   background, how long he's been at Church by the Glades, and why
+                   he leads this group. -->
               <div class="ph-text">
-                <b>[ALEX BIO]</b>
-                <i>Two or three sentences: his business and professional background,
-                  how long he&rsquo;s been at Church by the Glades, and why he leads
-                  this group.</i>
+                <i>Bio coming soon &mdash; check back before the fall cohort begins.</i>
               </div>
             </div>
           </div>
@@ -1577,7 +1597,6 @@ body.is-locked { overflow: hidden; }
               Glades&rsquo; fall lifegroup semester. Eight of those weeks are the Faith
               Driven Entrepreneur sessions; the first and last run about thirty minutes
               longer, for introductions at the start and reflection at the end.
-              [HOW THE REMAINING WEEKS ARE USED]
             </p>
             <p>
               A defined end date is deliberate. You are agreeing to ten weeks, not to
@@ -1609,7 +1628,7 @@ body.is-locked { overflow: hidden; }
               No. Solo operators, partners, and owners with teams are all welcome, and
               we intentionally keep industries varied &mdash; a directory full of the
               same trade helps nobody. What matters is that you own or lead the
-              business and can speak to its decisions. [ANY ADDITIONAL CRITERIA]
+              business and can speak to its decisions.
             </p>
           </div>
         </details>
@@ -1638,7 +1657,6 @@ body.is-locked { overflow: hidden; }
               <strong>Church by the Glades</strong> with the rest of the fall
               lifegroups, and the facilitators add members personally so the group
               stays a room of people who actually know each other.
-              [CHURCH LIFEGROUP SIGNUP LINK]
             </p>
             <p>
               Two ways to start: sign up through Church by the Glades and ask for the
@@ -1657,10 +1675,10 @@ body.is-locked { overflow: hidden; }
               own participant study guide and any food."
             -->
             <p>
-              [COST/DUES POLICY] The study uses a participant guide alongside the
-              videos &mdash; [WHO COVERS THE STUDY GUIDE]. If anything changes,
-              you&rsquo;ll hear it from a facilitator before it affects you, never as a
-              surprise.
+              Cost details are still being finalized &mdash; ask Kelly or Alex directly
+              and you&rsquo;ll have a straight answer before you commit to anything. If
+              anything changes once the group is running, you&rsquo;ll hear it from a
+              facilitator before it affects you, never as a surprise.
             </p>
           </div>
         </details>
@@ -1680,7 +1698,6 @@ body.is-locked { overflow: hidden; }
               counts, no lead fees, and no obligation to hire another member. A
               referral here is a personal endorsement, so we&rsquo;d rather you pass
               along five you&rsquo;d stake your name on than fifty you wouldn&rsquo;t.
-              [ANY DIRECTORY GUIDELINES]
             </p>
           </div>
         </details>
@@ -1697,7 +1714,6 @@ body.is-locked { overflow: hidden; }
             <p>
               That last part is built into the curriculum on purpose: the people it
               works on are expected to go and lead it for someone else.
-              [WHAT YOU PLAN TO DO AFTER THE SEMESTER]
             </p>
           </div>
         </details>
@@ -1733,23 +1749,24 @@ body.is-locked { overflow: hidden; }
           personally.
         </p>
 
-        <!-- No form by design — direct contact only. Replace bracketed values. -->
+        <!-- No form by design — direct contact only. Once real contact details exist,
+             restore the mailto:/tel: hrefs on these two spans. -->
         <div class="contact__methods">
-          <a href="mailto:[EMAIL@DOMAIN.COM]">
+          <div class="contact__box">
             <span class="contact__label">Email</span>
-            <span class="contact__value">[EMAIL@DOMAIN.COM]</span>
-          </a>
-          <a href="tel:[+15550000000]">
+            <span class="contact__value">Coming soon</span>
+          </div>
+          <div class="contact__box">
             <span class="contact__label">Call or Text</span>
-            <span class="contact__value">[(555) 000-0000]</span>
-          </a>
+            <span class="contact__value">Coming soon</span>
+          </div>
         </div>
 
         <p class="church">
           Newer to all of this? Start at <strong>Church by the Glades</strong> and ask
           about the <em>Jesus Is My CEO</em> lifegroup &mdash; the facilitators will
-          take it from there. The fall cohort begins
-          <strong>[COHORT START DATE]</strong> at <strong>[LOCATION]</strong>.
+          take it from there. The fall cohort begins soon &mdash; reach out for the
+          exact date and location.
         </p>
       </div>
     </div>
