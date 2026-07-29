@@ -1,3 +1,7 @@
 # Full-resolution image masters — kept in the repo for future re-cropping,
 # but never deployed. Optimized copies live in images/ and are what the page uses.
 assets/source/
+
+# Internal working documents. The repo root is served publicly, so anything here
+# that isn't meant for visitors has to be listed or it ends up at /<filename>.
+email-to-cassidy.md
