@@ -30,7 +30,7 @@ What's waiting on real copy:
 | `[DAY/TIME]`, `[LOCATION]` | Hero logistics strip, contact section | Meeting day, time, and place |
 | `[PHOTO — GROUP AT THE TABLE]` | Mission section | Replace the `div.ph` with an `<img>` |
 | `[HEADSHOT — KELLY]`, `[HEADSHOT — ALEX]` | Leaders | Professional headshots |
-| `[KELLY BIO]`, `[ALEX BIO]` | Leaders | Bio copy (replace the `span.ph-text`) |
+| `[KELLY BIO]`, `[ALEX BIO]` | Leaders | Bio copy (replace the whole `div.ph-text` block) |
 | `[TITLE — BUSINESS]` | Leaders | Each leader's role and company |
 | Directory cards | Business Directory | All 8 entries are **sample data** — swap in real member businesses and remove the `[Sample entries]` badge |
 | `[15 MIN]` etc. | How It Works | Real segment timings, or delete the `span.chip` elements |
@@ -55,7 +55,13 @@ be retuned in one place:
 
 ```
 --navy   #0B1F3A    --gold   #B8964A    --cream  #F7F4EE
+--slate  #5A6472    --gold-ink #836826
 ```
+
+There are deliberately two golds. `--gold` is used on navy backgrounds;
+`--gold-ink` is the same brass darkened for use on white and cream, because the
+lighter gold only reaches 2.8:1 there — below the accessible minimum. If you retune
+the palette, keep both and check contrast in each direction.
 
 The layout is mobile-first and fluid — type scales with `clamp()`, so there are only two
 breakpoints doing real work (roughly 620px and 900–1000px). Scroll fade-ins and the
@@ -125,7 +131,7 @@ npx vercel dev
   copy appear immediately instead of sitting in a CDN cache.
 - **`cleanUrls`** so `/index.html` also serves at `/`.
 
-Two things to know about the CSP if you extend the page later:
+Three things to know about the CSP if you extend the page later:
 
 - It allows inline `<style>` and `<script>` (the page needs both) but blocks scripts and
   styles loaded from other domains. If you add an analytics snippet or a font from a CDN,
