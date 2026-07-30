@@ -367,40 +367,33 @@ body.is-locked { overflow: hidden; }
   text-anchor: middle;
   text-transform: uppercase;
 }
+/* Always-lit border: a bright, permanently-glowing outline (brighter than the earlier
+   version) so the edge reads as lit even between passes of the orbiting ball below. */
 .bible__glow {
   fill: none;
-  stroke: var(--gold);
-  stroke-width: 3;
-  opacity: 0.7;
-  filter: blur(4px);
+  stroke: var(--gold-lite);
+  stroke-width: 4;
+  opacity: 0.95;
+  filter: blur(2.5px) drop-shadow(0 0 8px var(--gold));
 }
-/* Traveling light: a bright arc chases the book's outline on a continuous loop, with a
-   hot white-gold core (.bible__travel) inside a wider soft amber trail (.bible__trail)
-   so it reads as a moving light rather than a static ring. pathLength="100" on
-   #bibleOutline normalizes the dash units so 14/86 always means "14% lit, 86% dark"
-   regardless of the shape's actual perimeter length. */
-.bible__trail {
-  fill: none;
-  stroke: var(--gold);
-  stroke-width: 9;
-  stroke-linecap: round;
-  stroke-dasharray: 14 86;
-  opacity: 0.8;
-  filter: blur(4px) drop-shadow(0 0 14px var(--gold));
-  animation: bible-travel 4s linear infinite;
+/* Orbiting ball: a bright orb that travels around the book's outline on a continuous
+   loop. Driven by `transform: translate()` rather than animating cx/cy directly —
+   CSS transforms on SVG shapes are supported far more consistently across browsers
+   (the previous version of this effect used a dasharray/dashoffset technique that
+   read as too subtle, especially on phones). Stops trace the four corners of the
+   outline rect (x:20-178, y:16-246) in order, looping back to the start for a
+   seamless repeat. */
+.bible__ball {
+  fill: #FFF9E8;
+  filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 16px var(--gold-lite)) drop-shadow(0 0 30px var(--gold));
+  animation: bible-orbit 4.5s linear infinite;
 }
-.bible__travel {
-  fill: none;
-  stroke: #FFF6E0;
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-dasharray: 10 90;
-  filter: drop-shadow(0 0 5px #fff) drop-shadow(0 0 10px var(--gold-lite)) drop-shadow(0 0 18px var(--gold));
-  animation: bible-travel 4s linear infinite;
-}
-@keyframes bible-travel {
-  from { stroke-dashoffset: 0; }
-  to   { stroke-dashoffset: -100; }
+@keyframes bible-orbit {
+  0%   { transform: translate(28px, 16px); }
+  20%  { transform: translate(170px, 16px); }
+  50%  { transform: translate(178px, 238px); }
+  70%  { transform: translate(28px, 246px); }
+  100% { transform: translate(28px, 16px); }
 }
 
 .hero h1 {
@@ -1074,9 +1067,8 @@ body.is-locked { overflow: hidden; }
           <path class="bible__cross" d="M111,60 L111,100 M95,76 L127,76"/>
           <text class="bible__title" x="111" y="150">Holy</text>
           <text class="bible__title" x="111" y="172">Bible</text>
-          <rect id="bibleOutline" class="bible__glow" x="20" y="16" width="158" height="230" rx="8" pathLength="100"/>
-          <use href="#bibleOutline" class="bible__trail"/>
-          <use href="#bibleOutline" class="bible__travel"/>
+          <rect class="bible__glow" x="20" y="16" width="158" height="230" rx="8"/>
+          <circle class="bible__ball" r="8"/>
         </svg>
       </div>
     </div>
