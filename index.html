@@ -873,7 +873,7 @@ body.is-locked { overflow: hidden; }
 /* Questions of the Week reuses the FAQ accordion, but on a light (cream) section.
    The FAQ colours above are tuned for the navy background, so override them here
    with dark-on-cream equivalents or the text is unreadable. */
-#questions .faq { max-width: none; margin-inline: 0; }
+#questions .faq { max-width: 52rem; margin-inline: auto; }
 #questions .faq details,
 #questions .faq details:first-of-type { border-color: var(--line); }
 #questions .faq summary { color: var(--charcoal); }
@@ -881,6 +881,13 @@ body.is-locked { overflow: hidden; }
 #questions .faq summary::after { border-color: var(--gold-ink); }
 #questions .faq__body { color: var(--slate); }
 #questions .faq__body strong { color: var(--charcoal); }
+#questions .qa-heading {
+  text-align: center;
+  font-size: clamp(1.35rem, 1.1rem + 1vw, 1.9rem);
+  color: var(--navy);
+  margin: clamp(3rem, 6vw, 4.5rem) 0 0.25rem;
+}
+#questions .note { margin-inline: auto; text-align: center; }
 
 /* Inline text link — needs to be visibly a link inside body copy */
 .inline-link {
@@ -1434,7 +1441,7 @@ body.is-locked { overflow: hidden; }
   -->
   <section class="section section--cream" id="questions">
     <div class="shell">
-      <div class="section__head reveal">
+      <div class="section__head section__head--center reveal">
         <p class="eyebrow"><span class="eyebrow__num">06</span>Questions of the Week</p>
         <h2>Carry the conversation home.</h2>
         <hr class="rule">
@@ -1455,7 +1462,49 @@ body.is-locked { overflow: hidden; }
         </p>
       </div>
 
-      <div class="faq reveal" id="questions-list" style="margin-top:2.5rem">
+      <!-- How it works — three steps, reusing the .step card component from How a Session Runs -->
+      <div class="grid grid--3">
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">01</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M4 5.5A1.5 1.5 0 0 1 5.5 4h13A1.5 1.5 0 0 1 20 5.5v8a1.5 1.5 0 0 1-1.5 1.5H9l-5 4v-4Z"/>
+              <path d="M12 7.6v3.1M12 12.6v.05"/>
+            </svg>
+          </div>
+          <h3>We ask</h3>
+          <p>Each session ends with a couple of questions worth carrying into the week.</p>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">02</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M4 20l1-4L16 5l3 3L8 19l-4 1Z"/><path d="M14 7l3 3"/>
+            </svg>
+          </div>
+          <h3>You reflect &amp; submit</h3>
+          <p>Group members write their answer down and send it in through the form &mdash; on their own time, no pressure.</p>
+        </article>
+
+        <article class="step reveal">
+          <div class="step__top">
+            <span class="step__num">03</span>
+            <svg class="step__icon" width="26" height="26" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="1.4" aria-hidden="true">
+              <path d="M4.5 12.5l4.5 4.5L19.5 6.5"/>
+            </svg>
+          </div>
+          <h3>We review &amp; post</h3>
+          <p>Facilitators read every response and post the ones that speak wisdom, for the whole group to learn from.</p>
+        </article>
+      </div>
+
+      <h3 class="qa-heading reveal">This week&rsquo;s questions</h3>
+
+      <div class="faq reveal" id="questions-list">
         <details>
           <summary>This week&rsquo;s questions will appear here.</summary>
           <div class="faq__body">
@@ -1487,8 +1536,7 @@ body.is-locked { overflow: hidden; }
       </div>
 
       <p class="note">
-        <strong>How it works:</strong> the facilitators post each week&rsquo;s questions
-        here after the session. Answering is for <strong>members of the group</strong>
+        <strong>Members only:</strong> answering is for <strong>members of the group</strong>
         &mdash; the point is to help one another get to good answers, since someone among
         us may have lived through something similar and can speak real wisdom into it.
         Every submission is read and reviewed before it appears, so nothing goes public
