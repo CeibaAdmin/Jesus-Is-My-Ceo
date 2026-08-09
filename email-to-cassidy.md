@@ -39,7 +39,7 @@ They'll take a hiring problem or a cash-flow scare to a consultant before they'd
 to their church.
 
 **What it is.** Ten weeks, in person, working through the Faith Driven Entrepreneur
-Foundation curriculum — eight video sessions taught by J.D. Greear and Henry Kaestner,
+video study — eight video sessions taught by J.D. Greear and Henry Kaestner,
 each paired with a story from a working entrepreneur. About an hour a week: open in
 prayer, watch the teaching together, talk about it honestly, pray over each other before
 we leave. No homework, which matters for this crowd.
@@ -50,10 +50,11 @@ is the actual owner and I'm the steward, what changes about how I decide things 
 Monday? It's a direct challenge to the "God gets ten percent and I own the rest"
 instinct a lot of us have without ever saying out loud.
 
-We've registered as an official Faith Driven Entrepreneur Foundation Group, so there's
-structure behind us and not just enthusiasm — a facilitator training call before we
-start, a mid-cohort check-in with their staff, and attendance we're accountable for
-recording. We're not improvising this.
+We're using the Faith Driven Entrepreneur video study as our material, so there's a
+proven structure behind us and not just enthusiasm — a clear eight-session arc and a
+facilitator guide we're following closely. To be clear, we're an independent Church by the
+Glades lifegroup: we use their study as a resource but we're not registered with,
+affiliated with, or a group of Faith Driven Entrepreneur. We're not improvising this.
 
 **One thing I want to name up front.** Put a room of business owners together for ten
 weeks and they will start trusting each other enough to refer work. We think that's good
@@ -114,9 +115,10 @@ Worth deciding:
       Cassidy will want to know — churches are sensitive about barriers to entry.
       Currently omitted to keep the email short. If it's a real number, add one line to
       the logistics list rather than burying it.
-- [ ] **Whether to offer the website.** Held back deliberately — it still has sample
-      directory entries and unfilled placeholders. Once the placeholders are resolved,
-      sending her the link makes a natural second touchpoint after she replies.
+- [ ] **Whether to offer the website.** Held back deliberately — it still has unfilled
+      placeholders (meeting day/time, location, the Questions of the Week Google Form link).
+      Once the placeholders are resolved, sending her the link makes a natural second
+      touchpoint after she replies.
 
 ---
 
@@ -127,10 +129,6 @@ Worth deciding:
 > Thanks for the conversation [WHEN] — here's the detail I promised on the business
 > owners' group for the fall.
 
-**If FDE registration isn't finalised yet**, change "We've registered as an official"
-to "We're in the process of registering as an official." Don't overstate this one; she
-may well check.
-
 **Short version**, if Cassidy is the kind of director who prefers 150 words:
 
 > Hi Cassidy,
@@ -139,10 +137,10 @@ may well check.
 > business owners and entrepreneurs in our church — people who carry decisions alone and
 > tend to be the least connected in the room on a Sunday.
 >
-> Ten weeks, in person, using the Faith Driven Entrepreneur Foundation curriculum: eight
+> Ten weeks, in person, using the Faith Driven Entrepreneur video study: eight
 > video sessions taught by J.D. Greear and Henry Kaestner. An hour a week, no homework.
-> We've registered as an official FDE Foundation Group, which comes with facilitator
-> training and a mid-cohort check-in with their staff.
+> We use their study as a resource — to be clear, we're an independent CBG lifegroup, not
+> a registered or affiliated FDE group.
 >
 > To name it plainly: this isn't a networking group. FDE's own guide sets the boundary —
 > "weekly group time will focus on content and relationship," with business development
@@ -167,7 +165,7 @@ What Cassidy is weighing, and where each concern gets answered:
 | --- | --- |
 | Is this a networking club using the church for lead generation? | Named head-on, mid-email, with FDE's own rule quoted. The biggest risk to a yes, so it's raised before she has to. |
 | Is the curriculum theologically sound? | J.D. Greear's name, stated plainly. A pastor she'll almost certainly recognise does more work here than any assurance we could write. |
-| Are the leaders ready and accountable? | The registered-group process — training call, mid-cohort staff check-in, attendance recording. External accountability she doesn't have to build herself. |
+| Are the leaders ready and accountable? | A proven, structured curriculum with a facilitator guide we follow, plus whatever accountability CBG's own lifegroup process provides. |
 | Does it fill a real gap? | The opening paragraph: owners are isolated and under-shepherded. |
 | Is it exclusive? | "Any owner or operator, men and women, industries deliberately mixed." |
 

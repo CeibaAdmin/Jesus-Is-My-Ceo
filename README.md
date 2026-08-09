@@ -1,23 +1,29 @@
 # Jesus Is My CEO
 
-Landing page for **Jesus Is My CEO** — a 10-week in-person lifegroup for Christian
-business owners and entrepreneurs, running as part of Church by the Glades' fall
-lifegroup semester. It is a registered **Faith Driven Entrepreneur Foundation Group**
-and works through that curriculum's eight sessions.
+Landing page for **Jesus Is My CEO** — a 10-week in-person lifegroup on faith-driven
+leadership and stewardship, running as part of Church by the Glades' fall lifegroup
+semester. It's for Christian leaders of every kind — business owners, managers, ministry
+and nonprofit leaders, and anyone growing into leading well — and works through an
+eight-session video study.
 
-The page serves two purposes at once: it explains the discipleship side (Jesus holds
-authority over our businesses; we operate as stewards) and it showcases the group's
-trusted referral network of Christian-owned businesses.
+The page explains the discipleship idea (Jesus holds authority over everything we lead;
+we operate as stewards) and invites people to keep the conversation going through the
+**Questions of the Week** section.
 
-### One thing to keep straight when editing
+> **Affiliation note.** The group *uses* the Faith Driven Entrepreneur video study and
+> guide as a resource, but is **not** registered with, affiliated with, or a group of
+> Faith Driven Entrepreneur. It's an independent lifegroup of Church by the Glades. Keep
+> any FDE mention to a plain material credit — never language implying membership,
+> registration, or an organizational relationship.
 
-The Faith Driven Entrepreneur guide is explicit that **group time is for the study and
-for each other — networking and business development happen outside the hour**. The page
-is written to match: the session agenda contains no networking segment, and the directory
-section says plainly that referrals move between sessions rather than during them.
+### Questions of the Week
 
-If you edit that copy, keep the distinction. Describing referrals as part of the meeting
-would misrepresent the format to someone deciding whether to join.
+Each session closes with a couple of questions. Members write their answers down; the
+facilitators post the questions in the `#questions` section. Anyone can submit an answer
+through an external **Google Form** (link-out button), the facilitators **review every
+submission**, and approved answers are posted on the page as `<details>` blocks — the same
+accordion pattern used by the FAQ. There is no automatic publishing: nothing appears until
+a facilitator adds it to `index.html`.
 
 ## Viewing it
 
@@ -36,26 +42,25 @@ left in the file:
 grep -o '\[[^]]*\]' index.html | sort -u
 ```
 
-Already supplied: the mission-section group photo and all 8 directory category
-photos. Still outstanding:
+Already supplied: the mission-section group photo and both facilitator headshots. Still
+outstanding:
 
 
 | Placeholder | Where | What it needs |
 | --- | --- | --- |
+| `[GOOGLE FORM URL]` | Questions of the Week | The Google Form link members use to submit answers. Set it on the `Submit your answer` button's `href`. It's an external link-out, so no CSP change is needed. |
 | `[DAY/TIME]`, `[LOCATION]` | Hero logistics strip, contact section | Meeting day, time, and place (in person) |
 | `[COHORT START DATE]` | Contact | When the fall cohort begins |
 | `[CHURCH LIFEGROUP SIGNUP LINK]` | FAQ | The church's fall lifegroup registration page |
-| `[FDE LINK]` | Curriculum credit | Official faithdrivenentrepreneur.org URL |
-| `[HOW THE REMAINING WEEKS ARE USED]` | FAQ | 8 curriculum sessions across a 10-week semester — say what fills the other two |
+| `[HOW THE REMAINING WEEKS ARE USED]` | FAQ | 8 video sessions across a 10-week semester — say what fills the other two |
 | `[WHO COVERS THE STUDY GUIDE]` | FAQ | Whether members buy their own participant guide |
 | `[WHAT YOU PLAN TO DO AFTER THE SEMESTER]` | FAQ | Whether the group continues, and how |
 | `[HEADSHOT — KELLY]`, `[HEADSHOT — ALEX]` | Leaders | Professional headshots — the only images still missing |
 | `[KELLY BIO]`, `[ALEX BIO]` | Leaders | Bio copy (replace the whole `div.ph-text` block) |
-| `[TITLE — BUSINESS]` | Leaders | Each leader's role and company |
-| Directory cards | Business Directory | All 8 entries are **sample data** — swap in real member businesses and remove the `[Sample entries]` badge |
+| `[TITLE — BUSINESS]` | Leaders | Each facilitator's role and organization |
 | `[15 MIN]` etc. | How It Works | Real segment timings, or delete the `span.chip` elements |
 | `[COST/DUES POLICY]` | FAQ | Dues answer |
-| `[ANY ADDITIONAL CRITERIA]`, `[ANY DIRECTORY GUIDELINES]` | FAQ | Optional extra detail |
+| `[ANY ADDITIONAL CRITERIA]` | FAQ | Optional extra detail |
 | `[EMAIL@DOMAIN.COM]`, `[(555) 000-0000]` | Contact | Update both the visible text **and** the `mailto:` / `tel:` `href` |
 | `[NEXT MEETING DATE]` | Contact | Next gathering date |
 | `[DOMAIN]` | `<head>` | Needed for an absolute `og:image`, plus `og:url` and a canonical link |
@@ -63,7 +68,7 @@ photos. Still outstanding:
 Two things have alternates already written into the code as HTML comments, ready to
 swap:
 
-- **Hero tagline** — currently *"Lead your business the way God intended."* Two other
+- **Hero tagline** — currently *"Lead the way God intended."* Two other
   options sit in a comment directly above it.
 - **Anchor scripture** — currently Psalm 24:1, which lines up with the curriculum's
   Session 2 ("God Owns My Business"). 1 Corinthians 4:2, Luke 16:10–12, and the guide's
@@ -71,14 +76,15 @@ swap:
 
 ## Curriculum attribution
 
-The eight session titles on the page come from the Faith Driven Entrepreneur Foundation
-curriculum, taught by Henry Kaestner and J.D. Greear. **The one-line descriptions under
-each title are ours, not theirs** — the guide's own discussion questions are their
-copyrighted material and are deliberately not reproduced on the page.
+The eight session titles on the page come from the Faith Driven Entrepreneur video study,
+taught by Henry Kaestner and J.D. Greear. **The one-line descriptions under each title are
+ours, not theirs** — the guide's own discussion questions are their copyrighted material
+and are deliberately not reproduced on the page.
 
-Since this is a registered FDE group, the page credits them by name in the curriculum
-section and in the footer. Worth having FDE review the page before it goes wide, given it
-uses their programme name publicly.
+The page credits FDE by name only as the source of the study material, in the curriculum
+section. The same section states plainly that the group is **independent and not
+affiliated with FDE**. Keep it that way: a material credit is fine; anything implying
+membership, registration, or an organizational tie is not.
 
 ## Images
 
@@ -89,14 +95,13 @@ Two directories, with different jobs:
 | `images/` | Optimized WebP the page actually loads, plus `og-cover.jpg` | Yes |
 | `assets/source/` | Full-resolution PNG masters, kept for future re-cropping | **No** — excluded by `.vercelignore` |
 
-The masters total ~21 MB (2–3 MB each); the optimized set is **628 KB**. Serving the
-originals would have made the page unusable on a phone, so nothing in `assets/source/`
-is ever deployed.
+Serving the multi-megabyte originals would have made the page unusable on a phone, so
+nothing in `assets/source/` is ever deployed.
 
 Sizes were chosen for the widest case each image actually renders at, doubled for
 high-DPI screens:
 
-- `images/directory/*.webp` — 700×467 (3:2, the masters' native ratio, so nothing is cropped)
+- `images/leaders/*.webp` — facilitator headshots
 - `images/group-meeting.webp` — 1120×896 (5:4 native)
 - `images/og-cover.jpg` — 1200×630, cropped from the group photo and biased upward so
   the standing figures' heads aren't cut off. JPEG rather than WebP because some social
@@ -113,9 +118,7 @@ If you replace an image yourself, keep the `width`/`height` attributes on the `<
 step with the new file. They're what keeps the page from shifting as images load
 (verified: card heights are identical before and after images finish loading).
 
-Every `<img>` also carries `loading="lazy"`, `decoding="async"`, and alt text that
-describes the scene rather than naming a business — the directory photos illustrate the
-*category*, not the specific company listed on the card.
+Every `<img>` also carries `loading="lazy"`, `decoding="async"`, and descriptive alt text.
 
 ## Design notes
 
@@ -138,9 +141,11 @@ sticky-nav shadow are progressive enhancement: with JavaScript disabled the page
 renders completely, and animations are suppressed automatically for anyone with
 "reduce motion" enabled.
 
-**There is no signup form anywhere, by design.** Members are recruited through Church by
-the Glades and added by the leaders, so every "join" path points to email, phone, or the
-church.
+**There is no signup form on the page, by design.** Members are recruited through Church by
+the Glades and added by the facilitators, so every "join" path points to email, phone, or
+the church. The one form in play — the **Questions of the Week** answer form — lives on
+Google Forms and is reached by an external link-out, not embedded, so the page hosts no
+form of its own.
 
 ## Branches
 
@@ -210,8 +215,10 @@ Three things to know about the CSP if you extend the page later:
   add that host to `script-src` / `style-src` / `font-src` or it will be blocked.
 - Images are limited to `'self'` and `data:` URIs. Committing photos to this repo works
   as-is; hot-linking images from another domain needs that host added to `img-src`.
-- `form-action 'none'` matches the no-signup-form design. If a form is ever added, that
-  directive has to change too.
+- `form-action 'none'` matches the no-on-page-form design. The Questions of the Week answer
+  form is an external link-out to Google Forms (a plain `<a>`), which navigation CSP doesn't
+  restrict — so it needs no change. Only an *embedded* form or an on-page `<form>` that POSTs
+  would require touching `form-action` (and `frame-src` for an iframe embed).
 
 ## Other hosts
 
