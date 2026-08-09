@@ -870,6 +870,18 @@ body.is-locked { overflow: hidden; }
 .faq__list li::marker { color: var(--gold); }
 .faq__list strong { color: var(--white); font-weight: 600; }
 
+/* Questions of the Week reuses the FAQ accordion, but on a light (cream) section.
+   The FAQ colours above are tuned for the navy background, so override them here
+   with dark-on-cream equivalents or the text is unreadable. */
+#questions .faq { max-width: none; margin-inline: 0; }
+#questions .faq details,
+#questions .faq details:first-of-type { border-color: var(--line); }
+#questions .faq summary { color: var(--charcoal); }
+#questions .faq summary:hover { color: var(--gold-ink); }
+#questions .faq summary::after { border-color: var(--gold-ink); }
+#questions .faq__body { color: var(--slate); }
+#questions .faq__body strong { color: var(--charcoal); }
+
 /* Inline text link — needs to be visibly a link inside body copy */
 .inline-link {
   color: var(--gold-lite);
@@ -1428,14 +1440,18 @@ body.is-locked { overflow: hidden; }
         <hr class="rule">
         <p class="lede">
           We close each session with a couple of questions worth sitting with during the
-          week. Write your answer down, and share it here: submit it through the form
-          below, the facilitators review every response, and the ones we post go up on
-          this page so the whole group can learn from them.
+          week. Between sessions, <strong>group members</strong> can share their answers
+          here &mdash; because someone who has walked through something similar often has
+          wisdom the rest of us need. The facilitators review every response, and the ones
+          we post go up on this page for the whole group.
         </p>
         <p style="margin-top:1.75rem">
           <a class="btn btn--gold" href="[GOOGLE FORM URL]" target="_blank" rel="noopener">
             Submit your answer &rarr;
           </a>
+        </p>
+        <p class="badge" style="margin-top:1rem">
+          For current group members &mdash; the form is shared within the group.
         </p>
       </div>
 
@@ -1445,9 +1461,9 @@ body.is-locked { overflow: hidden; }
           <div class="faq__body">
             <p>
               After each session the facilitators post the week&rsquo;s questions in this
-              spot. Use the <strong>Submit your answer</strong> button above to send yours
-              in &mdash; every response is reviewed before it&rsquo;s posted, so give it
-              honest thought.
+              spot. If you&rsquo;re part of the group, use the <strong>Submit your
+              answer</strong> button above to send yours in &mdash; every response is
+              reviewed before it&rsquo;s posted, so give it honest thought.
             </p>
           </div>
         </details>
@@ -1472,9 +1488,11 @@ body.is-locked { overflow: hidden; }
 
       <p class="note">
         <strong>How it works:</strong> the facilitators post each week&rsquo;s questions
-        here after the session. Anyone can answer through the form &mdash; there are no
-        wrong answers and no pressure to respond. Every submission is read and reviewed
-        before it appears, so nothing goes public without a facilitator&rsquo;s okay.
+        here after the session. Answering is for <strong>members of the group</strong>
+        &mdash; the point is to help one another get to good answers, since someone among
+        us may have lived through something similar and can speak real wisdom into it.
+        Every submission is read and reviewed before it appears, so nothing goes public
+        without a facilitator&rsquo;s okay.
       </p>
     </div>
   </section>
@@ -1674,11 +1692,11 @@ body.is-locked { overflow: hidden; }
               of this site.
             </p>
             <p>
-              Anyone who wants to can submit an answer through the Google Form linked
+              Members of the group can submit an answer through the Google Form linked
               there. A facilitator reviews every submission, and the ones we post go up on
-              the page for the whole group to read. There are no wrong answers and no
-              pressure to respond &mdash; it&rsquo;s simply a way to keep the conversation
-              going between sessions.
+              the page for the whole group to read. The idea is that someone who has been
+              through something similar can speak wisdom into it &mdash; a way to help each
+              other get to good answers between sessions.
             </p>
           </div>
         </details>
