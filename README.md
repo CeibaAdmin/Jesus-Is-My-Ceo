@@ -42,28 +42,19 @@ left in the file:
 grep -o '\[[^]]*\]' index.html | sort -u
 ```
 
-Already supplied: the mission-section group photo and both facilitator headshots. Still
-outstanding:
-
+Already supplied: the mission-section group photo, both facilitator headshots and bios,
+the contact email and phone, the "no cost to join" answer, and the Questions of the Week
+Google Form link. Still outstanding:
 
 | Placeholder | Where | What it needs |
 | --- | --- | --- |
-| `[GOOGLE FORM URL]` | Questions of the Week | The Google Form link members use to submit answers. Set it on the `Submit your answer` button's `href`. It's an external link-out, so no CSP change is needed. |
-| `[DAY/TIME]`, `[LOCATION]` | Hero logistics strip, contact section | Meeting day, time, and place (in person) |
-| `[COHORT START DATE]` | Contact | When the fall cohort begins |
-| `[CHURCH LIFEGROUP SIGNUP LINK]` | FAQ | The church's fall lifegroup registration page |
-| `[HOW THE REMAINING WEEKS ARE USED]` | FAQ | 8 video sessions across a 10-week semester — say what fills the other two |
-| `[WHO COVERS THE STUDY GUIDE]` | FAQ | Whether members buy their own participant guide |
-| `[WHAT YOU PLAN TO DO AFTER THE SEMESTER]` | FAQ | Whether the group continues, and how |
-| `[HEADSHOT — KELLY]`, `[HEADSHOT — ALEX]` | Leaders | Professional headshots — the only images still missing |
-| `[KELLY BIO]`, `[ALEX BIO]` | Leaders | Bio copy (replace the whole `div.ph-text` block) |
-| `[TITLE — BUSINESS]` | Leaders | Each facilitator's role and organization |
-| `[15 MIN]` etc. | How It Works | Real segment timings, or delete the `span.chip` elements |
-| `[COST/DUES POLICY]` | FAQ | Dues answer |
-| `[ANY ADDITIONAL CRITERIA]` | FAQ | Optional extra detail |
-| `[EMAIL@DOMAIN.COM]`, `[(555) 000-0000]` | Contact | Update both the visible text **and** the `mailto:` / `tel:` `href` |
-| `[NEXT MEETING DATE]` | Contact | Next gathering date |
-| `[DOMAIN]` | `<head>` | Needed for an absolute `og:image`, plus `og:url` and a canonical link |
+| `· [Business Name]` | Leaders, `<p class="leader__role">` | Ceiba Accounting and The Balanced Coach are the two facilitators' businesses, but which belongs to Kelly and which to Alex is still unconfirmed — see the HTML comment right above the leader cards |
+| `[DOMAIN]` | `<head>` | Needed for an absolute `og:image`, plus `og:url` and a canonical link. Not visible to visitors, so not urgent. |
+
+Still missing entirely (no placeholder in the file — this needs a real meeting day, time,
+and location added to the hero logistics strip and the contact section's closing
+sentence, which currently just say "Details coming soon" / "reach out for the exact date
+and location").
 
 Two things have alternates already written into the code as HTML comments, ready to
 swap:
